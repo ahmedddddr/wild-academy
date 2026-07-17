@@ -153,11 +153,12 @@ const AdminNotifications = () => {
                 <label>Target Branch *</label>
                 <select value={targetBranch} onChange={(e) => setTargetBranch(e.target.value)}>
                   <option value="">Select branch...</option>
-                  <option value="TBS">TBS – Rehab</option>
+                  <option value="German future school">German future school – Rehab</option>
+                  <option value="Othman Bin affan school">Othman Bin affan school – Rehab</option>
                   <option value="Madinaty">Madinaty Sports Club</option>
                   <option value="MILS">MILS – Madinaty</option>
-                  <option value="BISM">BISM – Madinaty</option>
-                  <option value="Capital">Capital School – New Cairo</option>
+                  <option value="MIOLS">MIOLS – Madinaty</option>
+                  <option value="Carleton College">Carleton College – El Shorouk</option>
                 </select>
               </div>
 

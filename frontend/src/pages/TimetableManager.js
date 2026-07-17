@@ -25,11 +25,12 @@ const ACTIVITIES = [
 ];
 
 const BRANCHES = [
-  'TBS – Rehab',
+  'German future school – Rehab',
+  'Othman Bin affan school – Rehab',
   'Madinaty Sports Club',
   'MILS – Madinaty',
-  'BISM – Madinaty',
-  'Capital School – New Cairo'
+  'MIOLS – Madinaty',
+  'Carleton College – El Shorouk'
 ];
 
 const AGE_GROUPS = ['4-6', '7-9', '10-14'];
@@ -145,11 +146,12 @@ const TimetableManagerV2 = () => {
           <label>Select Branch</label>
           <select value={branch} onChange={(e) => setBranch(e.target.value)}>
             <option value="">Choose branch...</option>
-            <option value="TBS">TBS – Rehab</option>
+            <option value="German future school">German future school – Rehab</option>
+            <option value="Othman Bin affan school">Othman Bin affan school – Rehab</option>
             <option value="Madinaty">Madinaty Sports Club</option>
             <option value="MILS">MILS – Madinaty</option>
-            <option value="BISM">BISM – Madinaty</option>
-            <option value="Capital">Capital School – New Cairo</option>
+            <option value="MIOLS">MIOLS – Madinaty</option>
+            <option value="Carleton College">Carleton College – El Shorouk</option>
           </select>
         </div>
 

@@ -104,11 +104,12 @@ function AdminMediaManager() {
         <input type="file" onChange={handleFileChange} />
         <select value={selectedBranch} onChange={(e) => setSelectedBranch(e.target.value)}>
           <option value="">Select Branch</option>
-          <option value="TBS">TBS</option>
-          <option value="Madinaty">Madinaty</option>
-          <option value="MILS">MILS</option>
-          <option value="BISM">BISM</option>
-          <option value="Capital">Capital</option>
+          <option value="German future school">German future school – Rehab</option>
+          <option value="Othman Bin affan school">Othman Bin affan school – Rehab</option>
+          <option value="Madinaty">Madinaty Sports Club</option>
+          <option value="MILS">MILS – Madinaty</option>
+          <option value="MIOLS">MIOLS – Madinaty</option>
+          <option value="Carleton College">Carleton College – El Shorouk</option>
         </select>
         <select value={selectedAge} onChange={(e) => setSelectedAge(e.target.value)}>
           <option value="">Select Age Group</option>
