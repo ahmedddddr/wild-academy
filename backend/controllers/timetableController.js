@@ -55,3 +55,24 @@ exports.deleteBranchTimetable = async (req, res) => {
     res.status(500).json({ error: 'Unable to delete branch timetable.' });
   }
 };
+
+exports.updateSession = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { time, activity } = req.body;
+    
+    const session = await Timetable.findByIdAndUpdate(
+      id,
+      { time, activity },
+      { new: true }
+    );
+    
+    if (!session) {
+      return res.status(404).json({ error: 'Session not found' });
+    }
+    
+    res.json(session);
+  } catch (err) {
+    res.status(500).json({ error: 'Unable to update session.' });
+  }
+};

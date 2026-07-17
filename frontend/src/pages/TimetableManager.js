@@ -54,6 +54,9 @@ const TimetableManagerV2 = () => {
   const [day, setDay] = useState('');
   const [sessionTime, setSessionTime] = useState('');
   const [activity, setActivity] = useState('');
+  const [editingSession, setEditingSession] = useState(null);
+  const [editTime, setEditTime] = useState('');
+  const [editActivity, setEditActivity] = useState('');
 
   const activities = [
     'Swimming', 'Football', 'Basketball', 'Tennis', 'Art', 'Music', 
@@ -123,6 +126,48 @@ const TimetableManagerV2 = () => {
       }
     } catch (error) {
       console.error('Error deleting session:', error);
+    }
+  };
+
+  const handleEditSession = (session) => {
+    setEditingSession(session._id);
+    setEditTime(session.time);
+    setEditActivity(session.activity);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingSession(null);
+    setEditTime('');
+    setEditActivity('');
+  };
+
+  const handleSaveEdit = async (sessionId) => {
+    if (!editTime || !editActivity) {
+      alert('Please fill all fields');
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/api/timetable/${sessionId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          time: editTime,
+          activity: editActivity
+        })
+      });
+
+      if (response.ok) {
+        handleCancelEdit();
+        fetchTimetable();
+      } else {
+        alert('Failed to update session');
+      }
+    } catch (error) {
+      console.error('Error updating session:', error);
+      alert('Failed to update session');
     }
   };
 
@@ -233,16 +278,58 @@ const TimetableManagerV2 = () => {
                     <div className="day-sessions">
                       {sessions.map((session) => (
                         <div key={session._id} className="session-item">
-                          <div className="session-info">
-                            <span className="session-time">{session.time}</span>
-                            <span className="session-activity">{session.activity}</span>
-                          </div>
-                          <button 
-                            className="delete-btn"
-                            onClick={() => handleDeleteSession(session._id)}
-                          >
-                            ✕
-                          </button>
+                          {editingSession === session._id ? (
+                            <div className="session-edit-form">
+                              <input
+                                type="time"
+                                value={editTime}
+                                onChange={(e) => setEditTime(e.target.value)}
+                                className="edit-input"
+                              />
+                              <select
+                                value={editActivity}
+                                onChange={(e) => setEditActivity(e.target.value)}
+                                className="edit-input"
+                              >
+                                {activities.map(act => (
+                                  <option key={act} value={act}>{act}</option>
+                                ))}
+                              </select>
+                              <button 
+                                className="save-btn"
+                                onClick={() => handleSaveEdit(session._id)}
+                              >
+                                ✓
+                              </button>
+                              <button 
+                                className="cancel-btn"
+                                onClick={handleCancelEdit}
+                              >
+                                ✕
+                              </button>
+                            </div>
+                          ) : (
+                            <>
+                              <div className="session-info">
+                                <span className="session-time">{session.time}</span>
+                                <span className="session-activity">{session.activity}</span>
+                              </div>
+                              <div className="session-actions">
+                                <button 
+                                  className="edit-btn"
+                                  onClick={() => handleEditSession(session)}
+                                >
+                                  ✎
+                                </button>
+                                <button 
+                                  className="delete-btn"
+                                  onClick={() => handleDeleteSession(session._id)}
+                                >
+                                  ✕
+                                </button>
+                              </div>
+                            </>
+                          )}
                         </div>
                       ))}
                     </div>
