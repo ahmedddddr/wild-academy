@@ -696,15 +696,15 @@ main {
   }
 
   .stat-card {
-    padding: 0.5rem 0.75rem;
+    padding: 0.4rem 0.6rem;
   }
 
   .stat-value {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
 
   .stat-label {
-    font-size: 0.65rem;
+    font-size: 0.55rem;
   }
 
   main {
