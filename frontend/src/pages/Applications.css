@@ -86,6 +86,10 @@
   background: #c0392b;
 }
 
+.applications-table td {
+  white-space: nowrap;
+}
+
 .applications-table td button {
   font-weight: bold;
   padding: 8px 15px;
@@ -93,11 +97,13 @@
   cursor: pointer;
   transition: 0.3s;
   border: none;
+  display: inline-block;
 }
 
 .applications-table td button:first-child {
   background: #28a745;
   color: white;
+  margin-right: 8px;
 }
 
 .applications-table td button:first-child:hover {
