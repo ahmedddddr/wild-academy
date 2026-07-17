@@ -389,6 +389,21 @@ main {
   font-size: 0.95rem;
 }
 
+.click-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-emerald);
+  margin-top: 0.25rem;
+  transition: opacity 0.2s ease;
+}
+
+.location-card:hover .click-hint {
+  opacity: 0.8;
+}
+
 .map-section {
   padding: var(--space-xl) clamp(1.5rem, 6vw, var(--space-lg));
   background: linear-gradient(160deg, rgba(92, 160, 255, 0.12), #ffffff 70%);

@@ -194,6 +194,7 @@ function Home() {
                 <div className="card-body">
                   <h3>{location.name}</h3>
                   <p>{location.summary}</p>
+                  <span className="click-hint">📍 Click to view location</span>
                 </div>
               </a>
             ))}
