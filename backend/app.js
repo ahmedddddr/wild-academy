@@ -23,6 +23,7 @@ const mediaRoutes = require('./routes/mediaRoutes');
 const leaderboardRoutes = require('./routes/leaderboardRoutes');
 const achievementRoutes = require('./routes/achievementRoutes');
 const badgeRoutes = require('./routes/badgeRoutes');
+const prizeRoutes = require('./routes/prizeRoutes');
 
 dotenv.config();
 
@@ -58,6 +59,7 @@ app.use('/api/media', mediaRoutes);
 app.use('/api/leaderboard', leaderboardRoutes);
 app.use('/api/achievements', achievementRoutes);
 app.use('/api/badges', badgeRoutes);
+app.use('/api/prizes', prizeRoutes);
 
 // ✅ Setup multer storage engine for media uploads
 const storage = multer.diskStorage({

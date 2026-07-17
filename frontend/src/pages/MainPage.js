@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './MainPage.css';
-import { FaTrophy, FaUserCircle, FaComments, FaCamera, FaCalendarAlt, FaClipboardList, FaBullseye, FaBell } from 'react-icons/fa';
+import { FaTrophy, FaUserCircle, FaComments, FaCamera, FaCalendarAlt, FaClipboardList, FaBullseye, FaBell, FaShoppingCart } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
@@ -85,6 +85,11 @@ const MainPage = ({ user }) => {
         <div className="dashboard-card" onClick={() => navigate('/achievements')}>
           <FaClipboardList className="dashboard-icon" />
           <p>Achievements</p>
+        </div>
+
+        <div className="dashboard-card" onClick={() => navigate('/shop')}>
+          <FaShoppingCart className="dashboard-icon" />
+          <p>Prize Shop</p>
         </div>
       </div>
 

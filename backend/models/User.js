@@ -26,6 +26,22 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  points: {
+    type: Number,
+    default: 0
+  },
+  purchases: [{
+    prizeId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Prize'
+    },
+    prizeName: String,
+    points: Number,
+    purchaseDate: {
+      type: Date,
+      default: Date.now
+    }
+  }],
   createdAt: {
     type: Date,
     default: Date.now

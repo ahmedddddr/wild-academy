@@ -24,6 +24,8 @@ import Achievements from './pages/Achievements';
 import BadgeManager from './pages/BadgeManager';
 import LeaderboardManager from './pages/LeaderboardManager';
 import AchievementManager from './pages/AchievementManager';
+import Shop from './pages/Shop';
+import PrizeManager from './pages/PrizeManager';
 function App() {
   // Keep kid login persistent
  
@@ -55,6 +57,7 @@ const [user, setUser] = useState(() => {
         <Route path="/chat" element={<ChatPage user={user} />} />
         <Route path="/leaderboard" element={<Leaderboard user={user} />} />
         <Route path="/achievements" element={<Achievements user={user} />} />
+        <Route path="/shop" element={<Shop user={user} />} />
 
         {/* Admin routes */}
         <Route path="/admin/login" element={<AdminLogin />} />
@@ -68,6 +71,7 @@ const [user, setUser] = useState(() => {
 <Route path="/admin/badges" element={<BadgeManager />} />
 <Route path="/admin/leaderboard" element={<LeaderboardManager />} />
 <Route path="/admin/achievements" element={<AchievementManager />} />
+<Route path="/admin/prizes" element={<PrizeManager />} />
 
 
 

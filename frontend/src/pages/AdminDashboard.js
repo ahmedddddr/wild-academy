@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaCalendarAlt, FaClipboardList, FaCamera, FaComments, FaTrophy, FaBullseye, FaBell, FaMedal, FaAward } from 'react-icons/fa';
+import { FaUser, FaCalendarAlt, FaClipboardList, FaCamera, FaComments, FaTrophy, FaBullseye, FaBell, FaMedal, FaAward, FaBox } from 'react-icons/fa';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -59,6 +59,11 @@ const AdminDashboard = () => {
         <div className="admin-card" onClick={() => navigate('/admin/notifications')}>
           <FaBell className="admin-icon" />
           <p>Notifications</p>
+        </div>
+
+        <div className="admin-card" onClick={() => navigate('/admin/prizes')}>
+          <FaBox className="admin-icon" />
+          <p>Prize Manager</p>
         </div>
       </div>
     </div>
