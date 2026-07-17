@@ -42,6 +42,10 @@ exports.createAchievement = async (req, res) => {
       await leaderboardEntry.save();
     }
 
+    // Update user's points in User model
+    user.points += points || 0;
+    await user.save();
+
     res.status(201).json({ message: 'Achievement created successfully', achievement: newAchievement });
   } catch (err) {
     res.status(500).json({ error: 'Error creating achievement' });
@@ -130,6 +134,10 @@ exports.assignBadgeToUser = async (req, res) => {
       });
       await leaderboardEntry.save();
     }
+
+    // Update user's points in User model
+    user.points += badge.points;
+    await user.save();
 
     res.status(201).json({ message: 'Badge assigned successfully', achievement: newAchievement });
   } catch (err) {
