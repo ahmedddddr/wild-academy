@@ -16,8 +16,15 @@ function AchievementManager() {
   const [filterBranch, setFilterBranch] = useState('');
   const [filterAgeGroup, setFilterAgeGroup] = useState('');
 
-  const branches = ['North', 'South', 'East', 'West', 'Central'];
-  const ageGroups = ['5-7', '8-10', '11-13', '14-16'];
+  const branches = [
+    'German future school – Rehab',
+    'Othman Bin affan school – Rehab',
+    'Madinaty Sports Club',
+    'MILS – Madinaty',
+    'MIOLS – Madinaty',
+    'Carleton College – El Shorouk'
+  ];
+  const ageGroups = ['4-6', '7-9', '10-14'];
 
   useEffect(() => {
     fetchBadges();
