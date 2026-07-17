@@ -6,7 +6,7 @@ const router = express.Router();
 const ADMIN_USERNAME = 'admin';
 const ADMIN_PASSWORD = '1234';
 
-router.post('/admin/login', (req, res) => {
+router.post('/login', (req, res) => {
   const { username, password } = req.body;
 
   if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
