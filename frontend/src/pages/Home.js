@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './Home.css';
+import backgroundImage from '../public/locations/background.png';
 import {
   FaAward,
   FaFacebookF,
@@ -121,7 +122,7 @@ function Home() {
       </header>
 
       <main>
-        <section className="hero">
+        <section className="hero" style={{ backgroundImage: `url(${backgroundImage})` }}>
           <div className="hero-overlay" />
           <div className="hero-content">
             <span className="eyebrow">Super fun sports camps & weekend leagues</span>
