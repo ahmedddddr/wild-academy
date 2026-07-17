@@ -16,4 +16,9 @@ router.post('/login', (req, res) => {
   return res.status(401).json({ success: false, message: 'Invalid credentials' });
 });
 
+// GET route for testing
+router.get('/login', (req, res) => {
+  res.json({ message: 'Use POST request for login', method: 'POST', body: { username: 'admin', password: '1234' } });
+});
+
 module.exports = router;
