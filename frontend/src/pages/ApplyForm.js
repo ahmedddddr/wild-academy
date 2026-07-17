@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ApplyForm.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 function ApplyForm() {
   const [formData, setFormData] = useState({
     name: '',
@@ -20,7 +22,7 @@ function ApplyForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://192.168.100.7:3001/api/applications/apply', {
+      const response = await fetch(`${API_URL}/api/applications/apply`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
