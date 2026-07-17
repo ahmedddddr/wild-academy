@@ -3,6 +3,8 @@ import { FaArrowLeft, FaBell } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './NotificationsPage.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 const NotificationsPage = ({ user }) => {
   const [notifications, setNotifications] = useState([]);
   const navigate = useNavigate();
@@ -13,7 +15,7 @@ const NotificationsPage = ({ user }) => {
 
   const fetchNotifications = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/notifications/${user.branch}/${user.ageGroup}`);
+      const response = await fetch(`${API_URL}/api/notifications/${user.branch}/${user.ageGroup}`);
       const data = await response.json();
       setNotifications(data);
     } catch (error) {

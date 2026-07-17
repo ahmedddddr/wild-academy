@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './ChatPage.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 const ChatPage = ({ user }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
@@ -14,7 +16,7 @@ const ChatPage = ({ user }) => {
 
   const fetchMessages = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/messages/chat/${user.username}`);
+      const response = await fetch(`${API_URL}/api/messages/chat/${user.username}`);
       const data = await response.json();
       setMessages(data);
     } catch (error) {
@@ -26,7 +28,7 @@ const ChatPage = ({ user }) => {
     if (!newMessage.trim()) return;
 
     try {
-      const response = await fetch('http://localhost:3001/api/messages/chat', {
+      const response = await fetch(`${API_URL}/api/messages/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

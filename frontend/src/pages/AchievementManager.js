@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaAward, FaUser, FaMedal, FaSearch } from 'react-icons/fa';
 import './AchievementManager.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 function AchievementManager() {
   const navigate = useNavigate();
   const [badges, setBadges] = useState([]);
@@ -25,7 +27,7 @@ function AchievementManager() {
 
   const fetchBadges = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/badges');
+      const response = await fetch(`${API_URL}/api/badges`);
       const data = await response.json();
       setBadges(data);
     } catch (error) {
@@ -35,7 +37,7 @@ function AchievementManager() {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/users');
+      const response = await fetch(`${API_URL}/api/users`);
       const data = await response.json();
       setUsers(data);
     } catch (error) {
@@ -45,7 +47,7 @@ function AchievementManager() {
 
   const fetchAchievements = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/achievements/all');
+      const response = await fetch(`${API_URL}/api/achievements/all`);
       const data = await response.json();
       setAchievements(data);
     } catch (error) {
@@ -66,7 +68,7 @@ function AchievementManager() {
     }
 
     try {
-      const response = await fetch('http://localhost:3001/api/achievements/assign-badge', {
+      const response = await fetch(`${API_URL}/api/achievements/assign-badge`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -94,7 +96,7 @@ function AchievementManager() {
   const handleDeleteAchievement = async (id) => {
     if (window.confirm('Are you sure you want to delete this achievement?')) {
       try {
-        const response = await fetch(`http://localhost:3001/api/achievements/${id}`, {
+        const response = await fetch(`${API_URL}/api/achievements/${id}`, {
           method: 'DELETE'
         });
         if (response.ok) {

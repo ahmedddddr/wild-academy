@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaEdit, FaTrash, FaSync, FaTrophy, FaFilter } from 'react-icons/fa';
 import './LeaderboardManager.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 function LeaderboardManager() {
   const navigate = useNavigate();
   const [entries, setEntries] = useState([]);
@@ -33,7 +35,7 @@ function LeaderboardManager() {
 
   const fetchEntries = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/leaderboard/all');
+      const response = await fetch(`${API_URL}/api/leaderboard/all`);
       const data = await response.json();
       setEntries(data);
     } catch (error) {
@@ -78,7 +80,7 @@ function LeaderboardManager() {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3001/api/leaderboard/${editingEntry._id}`, {
+      const response = await fetch(`${API_URL}/api/leaderboard/${editingEntry._id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ points: formData.points })
@@ -98,7 +100,7 @@ function LeaderboardManager() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this entry?')) {
       try {
-        const response = await fetch(`http://localhost:3001/api/leaderboard/${id}`, {
+        const response = await fetch(`${API_URL}/api/leaderboard/${id}`, {
           method: 'DELETE'
         });
         if (response.ok) {
@@ -114,7 +116,7 @@ function LeaderboardManager() {
 
   const handleRecalculateRanks = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/leaderboard/recalculate', {
+      const response = await fetch(`${API_URL}/api/leaderboard/recalculate`, {
         method: 'POST'
       });
       if (response.ok) {

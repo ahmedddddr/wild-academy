@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './TimetableManager.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 const ACTIVITIES = [
   'Swimming',
   'Football',
@@ -68,7 +70,7 @@ const TimetableManagerV2 = () => {
 
   const fetchTimetable = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/timetable/${branch}/${ageGroup}`);
+      const response = await fetch(`${API_URL}/api/timetable/${branch}/${ageGroup}`);
       const data = await response.json();
       setTimetable(data);
     } catch (error) {
@@ -83,7 +85,7 @@ const TimetableManagerV2 = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3001/api/timetable', {
+      const response = await fetch(`${API_URL}/api/timetable`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -112,7 +114,7 @@ const TimetableManagerV2 = () => {
 
   const handleDeleteSession = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/timetable/${id}`, {
+      const response = await fetch(`${API_URL}/api/timetable/${id}`, {
         method: 'DELETE'
       });
 

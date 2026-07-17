@@ -3,6 +3,8 @@ import { FaArrowLeft, FaBell, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './AdminNotifications.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 const AdminNotifications = () => {
   const [notifications, setNotifications] = useState([]);
   const [title, setTitle] = useState('');
@@ -19,7 +21,7 @@ const AdminNotifications = () => {
 
   const fetchNotifications = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/notifications/all');
+      const response = await fetch(`${API_URL}/api/notifications/all`);
       const data = await response.json();
       setNotifications(data);
     } catch (error) {
@@ -38,7 +40,7 @@ const AdminNotifications = () => {
 
     try {
       console.log('Sending to API...');
-      const response = await fetch('http://localhost:3001/api/notifications', {
+      const response = await fetch(`${API_URL}/api/notifications`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +81,7 @@ const AdminNotifications = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/notifications/${id}`, {
+      const response = await fetch(`${API_URL}/api/notifications/${id}`, {
         method: 'DELETE'
       });
 

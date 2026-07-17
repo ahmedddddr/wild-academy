@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './AdminChat.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 const AdminChatV2 = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -28,7 +30,7 @@ const AdminChatV2 = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/messages/users');
+      const response = await fetch(`${API_URL}/api/messages/users`);
       const data = await response.json();
       setUsers(data.map(username => ({ username })));
     } catch (error) {
@@ -38,7 +40,7 @@ const AdminChatV2 = () => {
 
   const fetchMessages = async (username) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/messages/chat/${username}`);
+      const response = await fetch(`${API_URL}/api/messages/chat/${username}`);
       const data = await response.json();
       setMessages(data);
     } catch (error) {
@@ -55,7 +57,7 @@ const AdminChatV2 = () => {
     if (!reply.trim()) return;
 
     try {
-      const response = await fetch('http://localhost:3001/api/messages/chat', {
+      const response = await fetch(`${API_URL}/api/messages/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

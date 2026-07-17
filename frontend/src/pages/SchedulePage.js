@@ -3,6 +3,8 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './SchedulePage.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 const SchedulePage = ({ user }) => {
   const [timetable, setTimetable] = useState([]);
   const [selectedDay, setSelectedDay] = useState('All');
@@ -14,7 +16,7 @@ const SchedulePage = ({ user }) => {
 
   const fetchTimetable = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/timetable/${user.branch}/${user.ageGroup}`);
+      const response = await fetch(`${API_URL}/api/timetable/${user.branch}/${user.ageGroup}`);
       const data = await response.json();
       setTimetable(data);
     } catch (error) {
