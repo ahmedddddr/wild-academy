@@ -3,6 +3,8 @@ import { FaTrophy, FaMedal, FaAward } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './Leaderboard.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 const Leaderboard = ({ user }) => {
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,7 +16,7 @@ const Leaderboard = ({ user }) => {
 
   const fetchLeaderboard = async () => {
     try {
-      const response = await fetch(`http://192.168.100.7:3001/api/leaderboard/${user.branch}/${user.ageGroup}`);
+      const response = await fetch(`${API_URL}/api/leaderboard/${user.branch}/${user.ageGroup}`);
       const data = await response.json();
       setLeaderboard(data);
       setLoading(false);

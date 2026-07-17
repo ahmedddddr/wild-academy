@@ -3,6 +3,8 @@ import './MainPage.css';
 import { FaTrophy, FaUserCircle, FaComments, FaCamera, FaCalendarAlt, FaClipboardList, FaBullseye, FaBell } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 const MainPage = ({ user }) => {
   const [timetable, setTimetable] = useState([]);
   const [hasNotifications, setHasNotifications] = useState(false);
@@ -15,7 +17,7 @@ const MainPage = ({ user }) => {
 
   const fetchTimetable = async () => {
     try {
-      const response = await fetch(`http://192.168.100.7:3001/api/timetable/${user.branch}/${user.ageGroup}`);
+      const response = await fetch(`${API_URL}/api/timetable/${user.branch}/${user.ageGroup}`);
       const data = await response.json();
       setTimetable(data);
     } catch (error) {
@@ -25,7 +27,7 @@ const MainPage = ({ user }) => {
 
   const checkNotifications = async () => {
     try {
-      const response = await fetch(`http://192.168.100.7:3001/api/notifications/${user.branch}/${user.ageGroup}`);
+      const response = await fetch(`${API_URL}/api/notifications/${user.branch}/${user.ageGroup}`);
       const data = await response.json();
       setHasNotifications(data.length > 0);
     } catch (error) {

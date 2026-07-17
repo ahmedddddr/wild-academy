@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './MediaCenter.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 const MediaCenter = ({ user }) => {
   const [photos, setPhotos] = useState([]);
   const [lightboxUrl, setLightboxUrl] = useState(null);
@@ -8,7 +10,7 @@ const MediaCenter = ({ user }) => {
   const fetchPhotos = async () => {
     if (!user) return;
     try {
-      const response = await fetch(`http://192.168.100.7:3001/api/media/${user.branch}/${user.ageGroup}`);
+      const response = await fetch(`${API_URL}/api/media/${user.branch}/${user.ageGroup}`);
       const data = await response.json();
       setPhotos(data);
     } catch (error) {

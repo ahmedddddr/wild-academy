@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Applications.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 function Applications() {
   const [applications, setApplications] = useState([]);
   const [users, setUsers] = useState([]);
@@ -12,7 +14,7 @@ function Applications() {
 
   const fetchApplications = async () => {
     try {
-      const response = await fetch('http://192.168.100.7:3001/api/applications');
+      const response = await fetch(`${API_URL}/api/applications`);
       const data = await response.json();
       setApplications(data);
     } catch (error) {
@@ -22,7 +24,7 @@ function Applications() {
 
   const loadUsers = async () => {
     try {
-      const response = await fetch('http://192.168.100.7:3001/api/users');
+      const response = await fetch(`${API_URL}/api/users`);
       const data = await response.json();
       setUsers(data);
     } catch (error) {
@@ -55,7 +57,7 @@ function Applications() {
 
     try {
       // Create user via API
-      const userResponse = await fetch('http://192.168.100.7:3001/api/users', {
+      const userResponse = await fetch(`${API_URL}/api/users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -65,7 +67,7 @@ function Applications() {
 
       if (userResponse.ok) {
         // Delete application via API
-        const deleteResponse = await fetch(`http://192.168.100.7:3001/api/applications/${app._id}`, {
+        const deleteResponse = await fetch(`${API_URL}/api/applications/${app._id}`, {
           method: 'DELETE'
         });
 
@@ -84,7 +86,7 @@ function Applications() {
 
   const handleDelete = async (index) => {
     try {
-      const response = await fetch(`http://192.168.100.7:3001/api/applications/${applications[index]._id}`, {
+      const response = await fetch(`${API_URL}/api/applications/${applications[index]._id}`, {
         method: 'DELETE'
       });
 
@@ -99,7 +101,7 @@ function Applications() {
 
   const handleClearAll = async () => {
     try {
-      const response = await fetch('http://192.168.100.7:3001/api/applications/clear/all', {
+      const response = await fetch(`${API_URL}/api/applications/clear/all`, {
         method: 'DELETE'
       });
 

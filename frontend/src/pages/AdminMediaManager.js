@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './AdminMediaManager.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 function AdminMediaManager() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedBranch, setSelectedBranch] = useState('');
@@ -10,7 +12,7 @@ function AdminMediaManager() {
   const fetchPhotos = async () => {
     if (!selectedBranch || !selectedAge) return;
     try {
-      const response = await fetch(`http://192.168.100.7:3001/api/media/${selectedBranch}/${selectedAge}`);
+      const response = await fetch(`${API_URL}/api/media/${selectedBranch}/${selectedAge}`);
       const data = await response.json();
       setUploadedPhotos(data);
     } catch (error) {
@@ -36,7 +38,7 @@ function AdminMediaManager() {
     formData.append('photo', selectedFile);
 
     try {
-      const uploadResponse = await fetch('http://192.168.100.7:3001/api/upload', {
+      const uploadResponse = await fetch(`${API_URL}/api/upload`, {
         method: 'POST',
         body: formData,
       });
@@ -44,7 +46,7 @@ function AdminMediaManager() {
       const uploadData = await uploadResponse.json();
 
       if (uploadResponse.ok) {
-        const mediaResponse = await fetch('http://192.168.100.7:3001/api/media', {
+        const mediaResponse = await fetch(`${API_URL}/api/media`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -74,13 +76,13 @@ function AdminMediaManager() {
   const handleDeletePhoto = async (index) => {
     try {
       // Find the media document by URL
-      const response = await fetch('http://192.168.100.7:3001/api/media');
+      const response = await fetch(`${API_URL}/api/media`);
       const allMedia = await response.json();
       
       const mediaToDelete = allMedia.find(m => m.photoUrl === uploadedPhotos[index]);
       
       if (mediaToDelete) {
-        const deleteResponse = await fetch(`http://192.168.100.7:3001/api/media/${mediaToDelete._id}`, {
+        const deleteResponse = await fetch(`${API_URL}/api/media/${mediaToDelete._id}`, {
           method: 'DELETE'
         });
 

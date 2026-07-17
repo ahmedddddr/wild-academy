@@ -3,6 +3,8 @@ import { FaTrophy, FaStar, FaMedal, FaAward, FaFire, FaBolt, FaGem, FaCrown } fr
 import { useNavigate } from 'react-router-dom';
 import './Achievements.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 const Achievements = ({ user }) => {
   const [achievements, setAchievements] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,7 +17,7 @@ const Achievements = ({ user }) => {
 
   const fetchAchievements = async () => {
     try {
-      const response = await fetch(`http://192.168.100.7:3001/api/achievements/user/${user.username}`);
+      const response = await fetch(`${API_URL}/api/achievements/user/${user.username}`);
       const data = await response.json();
       setAchievements(data);
       const points = data.reduce((sum, achievement) => sum + (achievement.points || 0), 0);
