@@ -102,7 +102,7 @@ const activities = [
 
 const socials = [
   { label: 'Instagram', icon: FaInstagram, url: '#!' },
-  { label: 'Facebook', icon: FaFacebookF, url: '#!' },
+  { label: 'Facebook', icon: FaFacebookF, url: 'https://www.facebook.com/Wildacademyegypt?locale=ar_AR' },
   { label: 'WhatsApp', icon: FaWhatsapp, url: 'https://wa.me/201044505147' }
 ];
 
