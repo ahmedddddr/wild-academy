@@ -1,4 +1,7 @@
 const Badge = require('../models/Badge');
+const Achievement = require('../models/Achievement');
+const Leaderboard = require('../models/Leaderboard');
+const User = require('../models/User');
 
 // Create a new badge
 exports.createBadge = async (req, res) => {
@@ -74,11 +77,45 @@ exports.updateBadge = async (req, res) => {
 // Delete a badge
 exports.deleteBadge = async (req, res) => {
   try {
-    const badge = await Badge.findByIdAndDelete(req.params.id);
+    const badge = await Badge.findById(req.params.id);
     if (!badge) {
       return res.status(404).json({ error: 'Badge not found' });
     }
-    res.json({ message: 'Badge deleted successfully' });
+
+    // Find all achievements associated with this badge (by title matching badge name)
+    const achievements = await Achievement.find({ title: badge.name });
+
+    // For each achievement, subtract points from leaderboard and user
+    for (const achievement of achievements) {
+      // Update leaderboard
+      const leaderboardEntry = await Leaderboard.findOne({
+        username: achievement.username,
+        branch: achievement.branch,
+        ageGroup: achievement.ageGroup
+      });
+
+      if (leaderboardEntry) {
+        leaderboardEntry.points -= achievement.points || 0;
+        if (leaderboardEntry.points < 0) leaderboardEntry.points = 0;
+        await leaderboardEntry.save();
+      }
+
+      // Update user points
+      const user = await User.findOne({ username: achievement.username });
+      if (user) {
+        user.points -= achievement.points || 0;
+        if (user.points < 0) user.points = 0;
+        await user.save();
+      }
+    }
+
+    // Delete all achievements associated with this badge
+    await Achievement.deleteMany({ title: badge.name });
+
+    // Delete the badge
+    await Badge.findByIdAndDelete(req.params.id);
+
+    res.json({ message: 'Badge deleted successfully', affectedAchievements: achievements.length });
   } catch (err) {
     res.status(500).json({ error: 'Error deleting badge' });
   }
