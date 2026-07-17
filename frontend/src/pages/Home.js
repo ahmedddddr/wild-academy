@@ -103,7 +103,7 @@ const activities = [
 const socials = [
   { label: 'Instagram', icon: FaInstagram, url: '#!' },
   { label: 'Facebook', icon: FaFacebookF, url: '#!' },
-  { label: 'WhatsApp', icon: FaWhatsapp, url: 'https://wa.me/201022763887' }
+  { label: 'WhatsApp', icon: FaWhatsapp, url: 'https://wa.me/201044505147' }
 ];
 
 function Home() {
@@ -120,7 +120,7 @@ function Home() {
           <a href="#activities">Activities</a>
         </nav>
         <div className="nav-actions">
-          <a href="tel:+201022763887" className="btn btn-ghost">Call us</a>
+          <a href="tel:+201044505147" className="btn btn-ghost">Call us</a>
           <a href="/apply" className="btn btn-primary">Apply now</a>
           <a href="/login" className="btn btn-outline">Login</a>
         </div>
