@@ -6,6 +6,7 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
 function Applications() {
   const [applications, setApplications] = useState([]);
   const [users, setUsers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetchApplications();
@@ -114,41 +115,64 @@ function Applications() {
     }
   };
 
+  const filteredApplications = applications.filter(app =>
+    app.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    app.phone.includes(searchTerm) ||
+    app.branch.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    app.ageGroup.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="applications-container">
       <h1>Submitted Applications</h1>
+
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search by name, phone, branch, or age group..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
+      </div>
 
       {applications.length === 0 ? (
         <p>No applications yet.</p>
       ) : (
         <>
-          <button className="clear-all-btn" onClick={handleClearAll}>Clear All Applications</button>
+          <div className="action-buttons">
+            <button className="clear-all-btn" onClick={handleClearAll}>Clear All Applications</button>
+          </div>
 
-          <table className="applications-table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Branch</th>
-                <th>Age Group</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {applications.map((app, index) => (
-                <tr key={index}>
-                  <td>{app.name}</td>
-                  <td>{app.phone}</td>
-                  <td>{app.branch}</td>
-                  <td>{app.ageGroup}</td>
-                  <td>
-                    <button onClick={() => handleGenerateUser(app, index)}>Generate User</button>
-                    <button className="delete-btn" onClick={() => handleDelete(index)}>Delete</button>
-                  </td>
+          {filteredApplications.length === 0 ? (
+            <p>No applications match your search.</p>
+          ) : (
+            <table className="applications-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Branch</th>
+                  <th>Age Group</th>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {filteredApplications.map((app, index) => (
+                  <tr key={index}>
+                    <td>{app.name}</td>
+                    <td>{app.phone}</td>
+                    <td>{app.branch}</td>
+                    <td>{app.ageGroup}</td>
+                    <td>
+                      <button onClick={() => handleGenerateUser(app, index)}>Generate User</button>
+                      <button className="delete-btn" onClick={() => handleDelete(index)}>Delete</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </>
       )}
     </div>

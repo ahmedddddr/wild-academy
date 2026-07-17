@@ -8,8 +8,30 @@
 
 .applications-container h1 {
   color: #28a745;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   text-align: center;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #28a745;
+}
+
+.action-buttons {
+  margin-bottom: 20px;
 }
 
 .applications-table {
