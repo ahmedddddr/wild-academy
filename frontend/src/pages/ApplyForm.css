@@ -1,0 +1,80 @@
+.apply-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  padding: 20px;
+}
+
+.apply-card {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.apply-card h2 {
+  margin-bottom: 20px;
+  color: #e84300;
+}
+
+.apply-card label {
+  display: block;
+  margin: 10px 0 5px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+}
+
+.apply-card input,
+.apply-card select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.age-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.age-options label {
+  flex: 1;
+  font-weight: normal;
+}
+
+.apply-card button {
+  width: 100%;
+  padding: 12px;
+  background-color: #e84300;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.apply-card button:hover {
+  background-color: #e84300;
+}
+.form-logo {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('/public/background.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: Arial, sans-serif;
+}

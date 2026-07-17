@@ -1,0 +1,371 @@
+.achievements-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 100%);
+  min-height: 100vh;
+  color: #2d3748;
+}
+
+.achievements-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 30px 25px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  color: white;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.15);
+}
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.achievements-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.achievements-header p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.12);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.no-data {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.no-data p {
+  font-size: 1.1rem;
+  color: #718096;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+.achievement-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  gap: 15px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.achievement-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.12);
+}
+
+.achievement-card.legendary {
+  border-color: #ffd700;
+  background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+}
+
+.achievement-card.epic {
+  border-color: #9b59b6;
+  background: linear-gradient(135deg, #f8f4ff 0%, #f0e6ff 100%);
+}
+
+.achievement-card.rare {
+  border-color: #3498db;
+  background: linear-gradient(135deg, #e6f4ff 0%, #d4e9ff 100%);
+}
+
+.achievement-card.common {
+  border-color: #95a5a6;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.achievement-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.achievement-card.legendary .achievement-icon {
+  background: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+}
+
+.achievement-card.epic .achievement-icon {
+  background: rgba(155, 89, 182, 0.2);
+  color: #9b59b6;
+}
+
+.achievement-card.rare .achievement-icon {
+  background: rgba(52, 152, 219, 0.2);
+  color: #3498db;
+}
+
+.achievement-card.common .achievement-icon {
+  background: rgba(149, 165, 166, 0.2);
+  color: #95a5a6;
+}
+
+.achievement-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.achievement-info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.achievement-description {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #718096;
+  line-height: 1.4;
+}
+
+.achievement-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.achievement-type {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+
+.achievement-card.legendary .achievement-type {
+  background: rgba(255, 215, 0, 0.2);
+  color: #b8860b;
+}
+
+.achievement-card.epic .achievement-type {
+  background: rgba(155, 89, 182, 0.2);
+  color: #8e44ad;
+}
+
+.achievement-card.rare .achievement-type {
+  background: rgba(52, 152, 219, 0.2);
+  color: #2980b9;
+}
+
+.achievement-card.common .achievement-type {
+  background: rgba(149, 165, 166, 0.2);
+  color: #7f8c8d;
+}
+
+.achievement-points {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.achievement-date {
+  font-size: 0.75rem;
+  color: #a0aec0;
+  margin-top: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .achievements-container {
+    padding: 15px;
+  }
+
+  .achievements-header {
+    padding: 25px 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+
+  .achievements-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .achievements-header p {
+    font-size: 0.95rem;
+  }
+
+  .stats-section {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .stat-card {
+    padding: 20px;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .achievement-card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .achievement-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.7rem;
+  }
+
+  .achievement-info h3 {
+    font-size: 1rem;
+  }
+
+  .achievement-description {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .achievements-container {
+    padding: 12px;
+  }
+
+  .achievements-header {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .achievements-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .achievements-header p {
+    font-size: 0.9rem;
+  }
+
+  .stats-section {
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .stat-card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .stat-number {
+    font-size: 1.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .achievement-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .achievement-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+  }
+
+  .achievement-info h3 {
+    font-size: 0.95rem;
+  }
+
+  .achievement-description {
+    font-size: 0.75rem;
+  }
+
+  .achievement-type {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+  }
+
+  .achievement-points {
+    font-size: 0.8rem;
+  }
+
+  .achievement-date {
+    font-size: 0.7rem;
+  }
+}

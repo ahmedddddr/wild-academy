@@ -1,0 +1,382 @@
+.schedule-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 100%);
+  min-height: 100vh;
+  color: #2d3748;
+}
+
+.schedule-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 35px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 24px;
+  margin-bottom: 35px;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.15);
+}
+
+.back-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.schedule-title {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.header-info {
+  display: flex;
+  gap: 12px;
+}
+
+.branch-badge, .age-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.day-filter {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  padding: 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  border: 2px solid #e9ecef;
+  background: white;
+  color: #4a5568;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  border-color: #667eea;
+  color: #667eea;
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.schedule-content {
+  min-height: 400px;
+}
+
+.no-schedule {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.no-schedule-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.no-schedule h3 {
+  color: #4a5568;
+  font-size: 1.5rem;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+
+.no-schedule p {
+  color: #718096;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+}
+
+.day-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.day-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.12);
+}
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f4f8;
+}
+
+.day-header h3 {
+  color: #667eea;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.session-count {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.sessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.session-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+  transition: all 0.3s ease;
+}
+
+.session-card:hover {
+  background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+  transform: translateX(4px);
+}
+
+.session-icon {
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.session-info {
+  flex: 1;
+}
+
+.session-time {
+  color: #667eea;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.session-activity {
+  color: #4a5568;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .schedule-container {
+    padding: 20px;
+  }
+
+  .schedule-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .schedule-title {
+    font-size: 1.5rem;
+  }
+
+  .header-info {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .day-filter {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 15px;
+  }
+
+  .filter-btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .schedule-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .day-card {
+    padding: 20px;
+  }
+
+  .day-header {
+    margin-bottom: 12px;
+  }
+
+  .day-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .session-count {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
+
+  .session-card {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .session-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  .session-time {
+    font-size: 0.9rem;
+  }
+
+  .session-activity {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .schedule-container {
+    padding: 15px;
+  }
+
+  .schedule-header {
+    padding: 15px 20px;
+    border-radius: 16px;
+  }
+
+  .schedule-title {
+    font-size: 1.3rem;
+  }
+
+  .back-button {
+    padding: 10px 14px;
+    font-size: 1rem;
+  }
+
+  .branch-badge,
+  .age-badge {
+    font-size: 0.8rem;
+    padding: 4px 12px;
+  }
+
+  .day-filter {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .filter-btn {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+
+  .day-card {
+    padding: 15px;
+    border-radius: 14px;
+  }
+
+  .day-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .session-card {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .session-icon {
+    font-size: 1.3rem;
+    width: 35px;
+    height: 35px;
+  }
+
+  .session-time {
+    font-size: 0.85rem;
+  }
+
+  .session-activity {
+    font-size: 0.9rem;
+  }
+
+  .no-schedule {
+    padding: 40px 20px;
+  }
+
+  .no-schedule-icon {
+    font-size: 3rem;
+  }
+
+  .no-schedule h3 {
+    font-size: 1.2rem;
+  }
+
+  .no-schedule p {
+    font-size: 0.9rem;
+  }
+}

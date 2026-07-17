@@ -1,0 +1,326 @@
+.leaderboard-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 100%);
+  min-height: 100vh;
+  color: #2d3748;
+}
+
+.leaderboard-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 30px 25px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  color: white;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.15);
+}
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.leaderboard-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.leaderboard-header p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.no-data {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.no-data p {
+  font-size: 1.1rem;
+  color: #718096;
+}
+
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.leaderboard-item {
+  background: white;
+  padding: 20px 25px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.leaderboard-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.12);
+}
+
+.leaderboard-item.current-user {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+}
+
+.leaderboard-item.rank-1 {
+  background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+  border: 2px solid #ffc107;
+}
+
+.leaderboard-item.rank-2 {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 2px solid #6c757d;
+}
+
+.leaderboard-item.rank-3 {
+  background: linear-gradient(135deg, #fff5e6 0%, #ffe0b2 100%);
+  border: 2px solid #fd7e14;
+}
+
+.rank-cell {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.gold-medal {
+  font-size: 2rem;
+  color: #ffc107;
+  filter: drop-shadow(0 2px 4px rgba(255, 193, 7, 0.3));
+}
+
+.silver-medal {
+  font-size: 2rem;
+  color: #6c757d;
+  filter: drop-shadow(0 2px 4px rgba(108, 117, 125, 0.3));
+}
+
+.bronze-medal {
+  font-size: 2rem;
+  color: #fd7e14;
+  filter: drop-shadow(0 2px 4px rgba(253, 126, 20, 0.3));
+}
+
+.rank-number {
+  font-size: 1.3rem;
+  color: #718096;
+  font-weight: 600;
+}
+
+.user-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.username {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.you-badge {
+  background: #667eea;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.points-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.points {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.points-label {
+  font-size: 0.8rem;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.leaderboard-footer {
+  background: white;
+  padding: 20px 25px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.leaderboard-footer p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.leaderboard-footer p:first-child {
+  color: #667eea;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .leaderboard-container {
+    padding: 15px;
+  }
+
+  .leaderboard-header {
+    padding: 25px 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+
+  .leaderboard-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .leaderboard-header p {
+    font-size: 0.95rem;
+  }
+
+  .leaderboard-item {
+    padding: 16px 20px;
+    border-radius: 14px;
+  }
+
+  .rank-cell {
+    width: 40px;
+    font-size: 1.3rem;
+  }
+
+  .gold-medal,
+  .silver-medal,
+  .bronze-medal {
+    font-size: 1.7rem;
+  }
+
+  .username {
+    font-size: 1rem;
+  }
+
+  .points {
+    font-size: 1.3rem;
+  }
+
+  .leaderboard-footer {
+    padding: 16px 20px;
+    border-radius: 14px;
+  }
+
+  .leaderboard-footer p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .leaderboard-container {
+    padding: 12px;
+  }
+
+  .leaderboard-header {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .leaderboard-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .leaderboard-header p {
+    font-size: 0.9rem;
+  }
+
+  .leaderboard-item {
+    padding: 14px 16px;
+    border-radius: 12px;
+  }
+
+  .rank-cell {
+    width: 35px;
+  }
+
+  .gold-medal,
+  .silver-medal,
+  .bronze-medal {
+    font-size: 1.5rem;
+  }
+
+  .rank-number {
+    font-size: 1.1rem;
+  }
+
+  .user-info {
+    padding: 0 12px;
+  }
+
+  .username {
+    font-size: 0.95rem;
+  }
+
+  .you-badge {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+
+  .points {
+    font-size: 1.2rem;
+  }
+
+  .points-label {
+    font-size: 0.7rem;
+  }
+
+  .leaderboard-footer {
+    padding: 14px 16px;
+    border-radius: 12px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .leaderboard-footer p {
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,458 @@
+.timetable-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 100%);
+  min-height: 100vh;
+  color: #2d3748;
+}
+
+.timetable-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.timetable-header h1 {
+  color: #ff5400;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: #718096;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.selection-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.selection-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.selection-card label {
+  display: block;
+  color: #4a5568;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.selection-card select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.selection-card select:focus {
+  outline: none;
+  border-color: #ff5400;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(255, 84, 0, 0.1);
+}
+
+.timetable-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.add-session-section {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.add-session-section h3 {
+  color: #4a5568;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 25px 0;
+}
+
+.add-session-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #718096;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.form-group select,
+.form-group input {
+  padding: 14px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+  outline: none;
+  border-color: #ff5400;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(255, 84, 0, 0.1);
+}
+
+.add-btn {
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #ff5400 0%, #ff7b00 100%);
+  border: none;
+  color: white;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 84, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 84, 0, 0.3);
+}
+
+.add-btn span {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.existing-timetable-section {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.existing-timetable-section h3 {
+  color: #4a5568;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 25px 0;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: #a0aec0;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.timetable-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.day-card {
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.day-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.day-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(0,0,0,0.05);
+}
+
+.day-card-header h4 {
+  color: #667eea;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.session-count {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.day-sessions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.session-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
+}
+
+.session-item:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.session-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.session-time {
+  color: #667eea;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: rgba(102, 126, 234, 0.1);
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.session-activity {
+  color: #4a5568;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.delete-btn {
+  background: #e74c3c;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
+@media (max-width: 1024px) {
+  .timetable-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .timetable-container {
+    padding: 20px;
+  }
+
+  .timetable-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .timetable-header .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .selection-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .selection-card {
+    padding: 20px;
+  }
+
+  .add-session-section,
+  .existing-timetable-section {
+    padding: 25px 20px;
+  }
+
+  .add-session-section h3,
+  .existing-timetable-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+  }
+
+  .form-group select,
+  .form-group input {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+
+  .add-btn {
+    padding: 14px 20px;
+    font-size: 0.95rem;
+  }
+
+  .day-card {
+    padding: 15px;
+  }
+
+  .day-card-header h4 {
+    font-size: 1.1rem;
+  }
+
+  .session-item {
+    padding: 10px 14px;
+  }
+
+  .session-time,
+  .session-activity {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timetable-container {
+    padding: 15px;
+  }
+
+  .timetable-header {
+    margin-bottom: 25px;
+  }
+
+  .timetable-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .timetable-header .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .selection-card {
+    padding: 15px;
+  }
+
+  .selection-card label {
+    font-size: 0.9rem;
+  }
+
+  .selection-card select {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+
+  .add-session-section,
+  .existing-timetable-section {
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+
+  .add-session-section h3,
+  .existing-timetable-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-size: 0.8rem;
+  }
+
+  .form-group select,
+  .form-group input {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .add-btn {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+
+  .day-card {
+    padding: 12px;
+  }
+
+  .day-card-header h4 {
+    font-size: 1rem;
+  }
+
+  .session-count {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+  }
+
+  .session-item {
+    padding: 8px 12px;
+  }
+
+  .session-time {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+  }
+
+  .session-activity {
+    font-size: 0.85rem;
+  }
+
+  .delete-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+}

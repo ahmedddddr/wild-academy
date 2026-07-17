@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: wild-academy-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node app.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: MONGO_URI
+        sync: false
+    healthCheckPath: /
