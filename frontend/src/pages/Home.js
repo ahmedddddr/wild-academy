@@ -62,6 +62,7 @@ const locations = [
   },
   {
     name: 'Carleton College Egypt – El Shorouk',
+    image: '/locations/carleton.png',
     url: 'https://maps.app.goo.gl/tLGXb243YZoEUgHF7'
   }
 ];
