@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { FaPlus, FaEdit, FaTrash, FaArrowLeft } from 'react-icons/fa';
 import './BadgeManager.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 const WILD_ANIMALS = [
   '🦁 Lion', '🐯 Tiger', '🐻 Bear', '🐺 Wolf', '🦊 Fox',
   '🐘 Elephant', '🦒 Giraffe', '🦓 Zebra', '🦏 Rhino', '🐃 Buffalo',
@@ -39,7 +41,7 @@ function BadgeManager() {
 
   const fetchBadges = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/badges');
+      const response = await fetch(`${API_URL}/api/badges`);
       const data = await response.json();
       setBadges(data);
     } catch (error) {
@@ -50,12 +52,12 @@ function BadgeManager() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = editingBadge 
-        ? `http://localhost:3001/api/badges/${editingBadge._id}`
-        : 'http://localhost:3001/api/badges';
-      
+      const url = editingBadge
+        ? `${API_URL}/api/badges/${editingBadge._id}`
+        : `${API_URL}/api/badges`;
+
       const method = editingBadge ? 'PUT' : 'POST';
-      
+
       const response = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
@@ -89,7 +91,7 @@ function BadgeManager() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this badge?')) {
       try {
-        const response = await fetch(`http://localhost:3001/api/badges/${id}`, {
+        const response = await fetch(`${API_URL}/api/badges/${id}`, {
           method: 'DELETE'
         });
         if (response.ok) {
