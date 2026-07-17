@@ -38,6 +38,15 @@ app.use(bodyParser.json());
 // ✅ Serve uploaded images statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// ✅ Health check routes (must be before other routes)
+app.get('/', (req, res) => {
+  res.json({ message: 'Wild Academy API is running', status: 'ok' });
+});
+
+app.get('/api', (req, res) => {
+  res.json({ message: 'Wild Academy API endpoints', endpoints: ['/api/admin/login', '/api/badges', '/api/leaderboard', '/api/achievements'] });
+});
+
 // ✅ Routes for admin & applications
 app.use('/api/admin', adminRoutes);
 app.use('/api/applications', applicationRoutes);
@@ -49,15 +58,6 @@ app.use('/api/media', mediaRoutes);
 app.use('/api/leaderboard', leaderboardRoutes);
 app.use('/api/achievements', achievementRoutes);
 app.use('/api/badges', badgeRoutes);
-
-// ✅ Health check route
-app.get('/', (req, res) => {
-  res.json({ message: 'Wild Academy API is running', status: 'ok' });
-});
-
-app.get('/api', (req, res) => {
-  res.json({ message: 'Wild Academy API endpoints', endpoints: ['/api/admin/login', '/api/badges', '/api/leaderboard', '/api/achievements'] });
-});
 
 // ✅ Setup multer storage engine for media uploads
 const storage = multer.diskStorage({
