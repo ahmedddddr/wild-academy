@@ -28,7 +28,7 @@ const AdminDashboard = () => {
 
         <div className="admin-card" onClick={() => navigate('/admin/media')}>
           <FaCamera className="admin-icon" />
-          <p>Media Manager</p>
+          <p>Lost and Found Manager</p>
         </div>
 
         <div className="admin-card" onClick={() => navigate('/admin/chat')}>

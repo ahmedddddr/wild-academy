@@ -98,7 +98,7 @@ function AdminMediaManager() {
 
   return (
     <div className="media-container">
-      <h2 className="media-title">📷 Admin Media Manager</h2>
+      <h2 className="media-title">📷 Admin Lost and Found Manager</h2>
 
       <div className="media-form">
         <input type="file" onChange={handleFileChange} />

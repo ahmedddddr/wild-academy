@@ -64,7 +64,7 @@ const MainPage = ({ user }) => {
 
         <div className="dashboard-card" onClick={() => navigate('/media')}>
           <FaCamera className="dashboard-icon" />
-          <p>Photo Gallery</p>
+          <p>Lost and Found</p>
         </div>
 
         <div className="dashboard-card" onClick={() => navigate('/chat')}>

@@ -26,7 +26,7 @@ const MediaCenter = ({ user }) => {
 
   return (
     <div className="media-page-container">
-      <h2 className="media-title">📸 Media Center for {user.branch} – Age {user.ageGroup}</h2>
+      <h2 className="media-title">📸 Lost and Found for {user.branch} – Age {user.ageGroup}</h2>
 
       <div className="media-gallery">
         {photos.length === 0 ? (
