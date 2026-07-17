@@ -50,6 +50,15 @@ app.use('/api/leaderboard', leaderboardRoutes);
 app.use('/api/achievements', achievementRoutes);
 app.use('/api/badges', badgeRoutes);
 
+// ✅ Health check route
+app.get('/', (req, res) => {
+  res.json({ message: 'Wild Academy API is running', status: 'ok' });
+});
+
+app.get('/api', (req, res) => {
+  res.json({ message: 'Wild Academy API endpoints', endpoints: ['/api/admin/login', '/api/badges', '/api/leaderboard', '/api/achievements'] });
+});
+
 // ✅ Setup multer storage engine for media uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
