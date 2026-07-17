@@ -674,11 +674,37 @@ main {
   }
 
   .hero {
-    min-height: 60vh;
+    min-height: 70vh;
+    padding: var(--space-lg) clamp(1rem, 5vw, var(--space-lg));
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 7vw, 2.8rem);
+  }
+
+  .hero p {
+    font-size: 1rem;
   }
 
   .hero-stats {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: var(--space-xs);
+  }
+
+  .stat-card {
+    padding: 0.75rem 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
   }
 
   main {
@@ -693,11 +719,19 @@ main {
   }
 
   .hero h1 {
-    font-size: clamp(2.2rem, 8vw, 2.6rem);
+    font-size: clamp(1.8rem, 9vw, 2.4rem);
+  }
+
+  .hero p {
+    font-size: 0.95rem;
   }
 
   .hero-actions,
   .cta-actions {
+    width: 100%;
+  }
+
+  .hero-actions .btn {
     width: 100%;
   }
 
