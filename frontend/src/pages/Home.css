@@ -250,7 +250,7 @@ main {
 .stat-card {
   padding: 1rem 1.25rem;
   border-radius: var(--radius-sm);
-  background: linear-gradient(120deg, var(--color-emerald), var(--color-sun));
+  background: linear-gradient(135deg, #ff8a3d, #ffd25f);
   color: #ffffff;
   box-shadow: 0 14px 32px rgba(49, 216, 138, 0.32);
   transition: all 0.3s ease;
@@ -699,7 +699,7 @@ main {
   .stat-card {
     padding: 0.4rem 0.3rem;
     text-align: center;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    background: linear-gradient(135deg, #ff8a3d, #ffd25f);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
