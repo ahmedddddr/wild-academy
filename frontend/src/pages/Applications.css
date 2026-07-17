@@ -79,15 +79,29 @@
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s;
-  margin-left: 5px;
+  margin-left: 8px;
 }
 
 .delete-btn:hover {
   background: #c0392b;
 }
 
-button {
+.applications-table td button {
   font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+}
+
+.applications-table td button:first-child {
+  background: #28a745;
+  color: white;
+}
+
+.applications-table td button:first-child:hover {
+  background: #218838;
 }
 .users-table th, .users-table td {
   padding: 12px;
