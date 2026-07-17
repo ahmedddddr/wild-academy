@@ -2,7 +2,19 @@ const User = require('../models/User');
 
 exports.createUser = async (req, res) => {
   try {
-    const { name, phone, branch, ageGroup, username, password } = req.body;
+    const { name, phone, branch, ageGroup, password } = req.body;
+    
+    // Generate username from name
+    let baseUsername = name.toLowerCase().replace(/\s+/g, '');
+    let username = baseUsername;
+    let counter = 1;
+    
+    // Check if username exists and add number if needed
+    while (await User.findOne({ username })) {
+      username = `${baseUsername}${counter}`;
+      counter++;
+    }
+    
     const user = new User({
       name,
       phone,
