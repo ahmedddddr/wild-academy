@@ -37,38 +37,31 @@ const features = [
 const locations = [
   {
     name: 'Madinaty Sports Club',
-    summary: 'Sparkly pools, fast tracks and giant indoor arenas for all-out fun.',
     image: '/locations/madinaty.png',
     url: 'https://maps.app.goo.gl/WffUixPHUFycP4Dq5'
   },
   {
     name: 'MILS – Madinaty',
-    summary: 'Cool multi-sport domes that flip from futsal to volleyball to tag time.',
     image: '/locations/mils.png',
     url: 'https://maps.app.goo.gl/jE4j7WEeSGHFeBXE7'
   },
   {
     name: 'MIOLS – Madinaty',
-    summary: 'Climbing walls, ninja courses and training labs that feel like an adventure movie.',
     image: '/locations/miols.png',
     url: 'https://maps.app.goo.gl/RQL5VMBARtVy8iKdA'
   },
   {
     name: 'Othman Bin Affan – El Rehab',
-    summary: 'Big green fields, bright gyms and a cheering crowd for every goal.',
     image: '/locations/othman.png',
     url: 'https://maps.app.goo.gl/XUh71W4xnedy6HRC9'
   },
   {
     name: 'French-german future school – El Rehab',
-    summary: 'Big green fields, bright gyms and a cheering crowd for every goal.',
     image: '/locations/french.png',
     url: 'https://maps.app.goo.gl/ox4Zy3KD8XV2DHyD7'
   },
   {
     name: 'Carleton College Egypt – El Shorouk',
-    summary: 'Outdoor courts, skate bowls and mega fun for every weekend warrior.',
-    image: '/locations/carleton.png',
     url: 'https://maps.app.goo.gl/tLGXb243YZoEUgHF7'
   }
 ];
