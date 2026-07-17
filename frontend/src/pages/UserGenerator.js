@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './UserGenerator.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 const UserGenerator = () => {
   const [users, setUsers] = useState([]);
   const [searchPhone, setSearchPhone] = useState('');
@@ -11,7 +13,7 @@ const UserGenerator = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/users');
+      const response = await fetch(`${API_URL}/api/users`);
       const data = await response.json();
       setUsers(data);
     } catch (error) {
@@ -19,9 +21,30 @@ const UserGenerator = () => {
     }
   };
 
-  const filteredUsers = users.filter(user => 
+  const filteredUsers = users.filter(user =>
     user.phone.includes(searchPhone)
   );
+
+  const handleDelete = async (userId) => {
+    if (!window.confirm('Are you sure you want to delete this user?')) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/api/users/${userId}`, {
+        method: 'DELETE'
+      });
+
+      if (response.ok) {
+        fetchUsers();
+      } else {
+        alert('Failed to delete user');
+      }
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      alert('Error deleting user');
+    }
+  };
 
   return (
     <div className="user-generator-container">
@@ -50,6 +73,7 @@ const UserGenerator = () => {
                 <th>Age Group</th>
                 <th>Username</th>
                 <th>Password</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -61,6 +85,9 @@ const UserGenerator = () => {
                   <td>{user.ageGroup}</td>
                   <td>{user.username}</td>
                   <td>{user.password}</td>
+                  <td>
+                    <button className="delete-btn" onClick={() => handleDelete(user._id)}>Delete</button>
+                  </td>
                 </tr>
               ))}
             </tbody>
