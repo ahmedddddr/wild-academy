@@ -175,7 +175,7 @@ main {
   display: flex;
   align-items: center;
   padding: var(--space-xl) clamp(1.5rem, 6vw, var(--space-lg));
-  background: linear-gradient(135deg, #1b3fb8, #6a5cff);
+  background: linear-gradient(135deg, #ff8a3d, #ffd25f);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
