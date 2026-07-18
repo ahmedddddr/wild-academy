@@ -189,6 +189,25 @@ const Shop = ({ user }) => {
           )}
         </div>
       )}
+
+      <nav className="bottom-toolbar">
+        <div className="toolbar-item" onClick={() => navigate('/main')}>
+          <span className="toolbar-icon">🏠</span>
+          <span className="toolbar-label">Home</span>
+        </div>
+        <div className="toolbar-item" onClick={() => navigate('/leaderboard')}>
+          <span className="toolbar-icon">🏆</span>
+          <span className="toolbar-label">Leaderboard</span>
+        </div>
+        <div className="toolbar-item" onClick={() => navigate('/schedule')}>
+          <span className="toolbar-icon">📅</span>
+          <span className="toolbar-label">Schedule</span>
+        </div>
+        <div className="toolbar-item" onClick={() => navigate('/profile')}>
+          <span className="toolbar-icon">👤</span>
+          <span className="toolbar-label">Profile</span>
+        </div>
+      </nav>
     </div>
   );
 };

@@ -57,11 +57,6 @@ const MainPage = ({ user }) => {
       <h1 className="dashboard-title">My Dashboard</h1>
 
       <div className="dashboard-grid">
-        <div className="dashboard-card" onClick={() => navigate('/schedule')}>
-          <FaCalendarAlt className="dashboard-icon" />
-          <p>My Schedule</p>
-        </div>
-
         <div className="dashboard-card" onClick={() => navigate('/media')}>
           <FaCamera className="dashboard-icon" />
           <p>Lost and Found</p>
@@ -70,11 +65,6 @@ const MainPage = ({ user }) => {
         <div className="dashboard-card" onClick={() => navigate('/chat')}>
           <FaComments className="dashboard-icon" />
           <p>Messages</p>
-        </div>
-
-        <div className="dashboard-card" onClick={() => navigate('/leaderboard')}>
-          <FaTrophy className="dashboard-icon" />
-          <p>Leaderboard</p>
         </div>
 
         <div className="dashboard-card" onClick={() => navigate('/activities')}>

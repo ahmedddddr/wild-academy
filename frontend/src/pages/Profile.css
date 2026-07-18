@@ -1,7 +1,7 @@
 .profile-container {
   max-width: 800px;
   margin: 40px auto;
-  padding: 40px;
+  padding: 40px 40px 120px 40px;
   border-radius: 24px;
   background: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 100%);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
@@ -293,7 +293,7 @@
 @media (max-width: 768px) {
   .profile-container {
     margin: 20px;
-    padding: 20px;
+    padding: 20px 20px 100px 20px;
   }
 
   .profile-header {
@@ -303,6 +303,45 @@
 
   .profile-header h1 {
     font-size: 1.8rem;
+  }
+
+  .back-button,
+  .logout-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile-card {
+    padding: 25px;
+  }
+
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .avatar-icon {
+    font-size: 2rem;
+  }
+
+  .profile-name {
+    font-size: 1.5rem;
+  }
+
+  .profile-username {
+    font-size: 1rem;
+  }
+
+  .info-section,
+  .stats-section,
+  .purchases-section {
+    padding: 20px;
+  }
+
+  .info-section h3,
+  .stats-section h3,
+  .purchases-section h3 {
+    font-size: 1.2rem;
   }
 
   .info-grid,
@@ -315,4 +354,66 @@
     align-items: flex-start;
     gap: 10px;
   }
+}
+
+/* Bottom Toolbar */
+.bottom-toolbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+}
+
+.toolbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.toolbar-item:hover {
+  background: rgba(255, 84, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.toolbar-item:active {
+  transform: scale(0.95);
+}
+
+.toolbar-active {
+  background: rgba(255, 84, 0, 0.15);
+}
+
+.toolbar-active .toolbar-label {
+  color: #ff5400;
+}
+
+.toolbar-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.toolbar-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.toolbar-item:hover .toolbar-label {
+  color: #ff5400;
 }

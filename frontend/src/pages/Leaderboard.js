@@ -83,6 +83,25 @@ const Leaderboard = ({ user }) => {
         <p>Your Rank: {leaderboard.find(e => e.username === user.username)?.rank || 'N/A'}</p>
         <p>Your Points: {leaderboard.find(e => e.username === user.username)?.points || 0}</p>
       </div>
+
+      <nav className="bottom-toolbar">
+        <div className="toolbar-item" onClick={() => navigate('/main')}>
+          <span className="toolbar-icon">🏠</span>
+          <span className="toolbar-label">Home</span>
+        </div>
+        <div className="toolbar-item toolbar-active">
+          <span className="toolbar-icon">🏆</span>
+          <span className="toolbar-label">Leaderboard</span>
+        </div>
+        <div className="toolbar-item" onClick={() => navigate('/schedule')}>
+          <span className="toolbar-icon">📅</span>
+          <span className="toolbar-label">Schedule</span>
+        </div>
+        <div className="toolbar-item" onClick={() => navigate('/profile')}>
+          <span className="toolbar-icon">👤</span>
+          <span className="toolbar-label">Profile</span>
+        </div>
+      </nav>
     </div>
   );
 };
