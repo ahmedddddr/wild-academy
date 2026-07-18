@@ -1,14 +1,30 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaCalendarAlt, FaClipboardList, FaCamera, FaComments, FaTrophy, FaBullseye, FaBell, FaMedal, FaAward, FaBox } from 'react-icons/fa';
+import { FaUser, FaCalendarAlt, FaClipboardList, FaCamera, FaComments, FaTrophy, FaBullseye, FaBell, FaMedal, FaAward, FaBox, FaSignOutAlt, FaThLarge } from 'react-icons/fa';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
 
+  const handleLogout = () => {
+    localStorage.removeItem('adminToken');
+    navigate('/admin/login');
+  };
+
   return (
     <div className="admin-dashboard">
-      <h1>Admin Dashboard</h1>
+      <div className="admin-dashboard-header">
+        <div className="header-content">
+          <div className="header-icon">
+            <FaThLarge />
+          </div>
+          <h1>Admin Dashboard</h1>
+        </div>
+        <button className="logout-btn" onClick={handleLogout}>
+          <FaSignOutAlt style={{ marginRight: '8px' }} />
+          Logout
+        </button>
+      </div>
 
       <div className="admin-grid">
         <div className="admin-card" onClick={() => navigate('/admin/users')}>
