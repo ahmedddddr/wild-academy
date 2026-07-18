@@ -9,7 +9,19 @@ const Achievements = ({ user }) => {
   const [achievements, setAchievements] = useState([]);
   const [loading, setLoading] = useState(true);
   const [totalPoints, setTotalPoints] = useState(0);
+  const [filterBranch, setFilterBranch] = useState('');
+  const [filterAgeGroup, setFilterAgeGroup] = useState('');
   const navigate = useNavigate();
+
+  const branches = [
+    'German future school – Rehab',
+    'Othman Bin affan school – Rehab',
+    'Madinaty Sports Club',
+    'MILS – Madinaty',
+    'MIOLS – Madinaty',
+    'Carleton College – El Shorouk'
+  ];
+  const ageGroups = ['4-6', '7-9', '10-14'];
 
   useEffect(() => {
     fetchAchievements();
@@ -28,6 +40,12 @@ const Achievements = ({ user }) => {
       setLoading(false);
     }
   };
+
+  const filteredAchievements = achievements.filter(achievement => {
+    const matchesBranch = !filterBranch || achievement.branch === filterBranch;
+    const matchesAgeGroup = !filterAgeGroup || achievement.ageGroup === filterAgeGroup;
+    return matchesBranch && matchesAgeGroup;
+  });
 
   const getIcon = (icon) => {
     const icons = {
@@ -73,13 +91,37 @@ const Achievements = ({ user }) => {
         </div>
       </div>
 
-      {achievements.length === 0 ? (
+      <div className="filters-section">
+        <select
+          value={filterBranch}
+          onChange={(e) => setFilterBranch(e.target.value)}
+          className="filter-select"
+        >
+          <option value="">All Branches</option>
+          {branches.map(branch => (
+            <option key={branch} value={branch}>{branch}</option>
+          ))}
+        </select>
+        
+        <select
+          value={filterAgeGroup}
+          onChange={(e) => setFilterAgeGroup(e.target.value)}
+          className="filter-select"
+        >
+          <option value="">All Age Groups</option>
+          {ageGroups.map(age => (
+            <option key={age} value={age}>{age} years</option>
+          ))}
+        </select>
+      </div>
+
+      {filteredAchievements.length === 0 ? (
         <div className="no-data">
-          <p>No achievements yet. Complete activities to earn your first achievement!</p>
+          <p>No achievements found with the selected filters.</p>
         </div>
       ) : (
         <div className="achievements-grid">
-          {achievements.map((achievement, index) => {
+          {filteredAchievements.map((achievement, index) => {
             const type = getAchievementType(achievement.points);
             return (
               <div key={index} className={`achievement-card ${type.class}`}>
@@ -94,6 +136,10 @@ const Achievements = ({ user }) => {
                   <div className="achievement-meta">
                     <span className="achievement-type">{type.label}</span>
                     <span className="achievement-points">+{achievement.points} pts</span>
+                  </div>
+                  <div className="achievement-details">
+                    <span className="achievement-branch">{achievement.branch}</span>
+                    <span className="achievement-age">{achievement.ageGroup} years</span>
                   </div>
                   <span className="achievement-date">
                     {new Date(achievement.dateEarned).toLocaleDateString()}

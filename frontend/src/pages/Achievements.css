@@ -82,6 +82,37 @@
   letter-spacing: 0.5px;
 }
 
+.filters-section {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.filter-select {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 2px solid #e9ecef;
+  background: white;
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #2d3748;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.filter-select:hover {
+  border-color: #667eea;
+}
+
 .no-data {
   background: white;
   padding: 40px;
@@ -230,6 +261,22 @@
   font-size: 0.85rem;
   font-weight: 700;
   color: #667eea;
+}
+
+.achievement-details {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.achievement-branch,
+.achievement-age {
+  font-size: 0.75rem;
+  color: #718096;
+  background: rgba(102, 126, 234, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 500;
 }
 
 .achievement-date {
