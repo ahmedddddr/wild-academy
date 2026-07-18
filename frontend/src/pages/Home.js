@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './Home.css';
 import backgroundImage from '../background.png';
@@ -102,6 +102,37 @@ const socials = [
 ];
 
 function Home() {
+  const [animatedStats, setAnimatedStats] = useState({ happyCampers: 0, sports: 0, coaches: 0 });
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+    
+    // Animate statistics
+    const duration = 2000;
+    const steps = 60;
+    const interval = duration / steps;
+    let step = 0;
+
+    const timer = setInterval(() => {
+      step++;
+      const progress = step / steps;
+      
+      setAnimatedStats({
+        happyCampers: Math.floor(progress * 500),
+        sports: Math.floor(progress * 24),
+        coaches: Math.floor(progress * 100)
+      });
+
+      if (step >= steps) {
+        clearInterval(timer);
+        setAnimatedStats({ happyCampers: 500, sports: 24, coaches: 100 });
+      }
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="home">
       <header className="top-nav" id="home">
@@ -119,6 +150,13 @@ function Home() {
       <main>
         <section className="hero" style={{ backgroundImage: `url(${backgroundImage})` }}>
           <div className="hero-overlay" />
+          <div className="hero-particles">
+            <span className="particle particle-1">⚽</span>
+            <span className="particle particle-2">🏀</span>
+            <span className="particle particle-3">🎯</span>
+            <span className="particle particle-4">🏆</span>
+            <span className="particle particle-5">🎉</span>
+          </div>
           <div className="hero-content">
             <span className="eyebrow">Super fun sports camps & weekend leagues</span>
             <h1>Move, play and cheer all day long 🏃‍♂️🎉</h1>
@@ -127,17 +165,27 @@ function Home() {
               with epic stories.
             </p>
             <div className="hero-actions">
-              <a href="/apply" className="btn btn-primary">Grab a camp spot</a>
+              <a href="/apply" className="btn btn-primary btn-pulse">Grab a camp spot</a>
               <a href="#locations" className="btn btn-ghost">See cool venues</a>
             </div>
             <div className="hero-stats">
-              {stats.map(stat => (
-                <div key={stat.label} className="stat-card">
-                  <span className="stat-value">{stat.value}</span>
-                  <span className="stat-label">{stat.label}</span>
-                </div>
-              ))}
+              <div className="stat-card">
+                <span className="stat-value">{animatedStats.happyCampers}+</span>
+                <span className="stat-label">Happy campers</span>
+              </div>
+              <div className="stat-card">
+                <span className="stat-value">{animatedStats.sports}+</span>
+                <span className="stat-label">Sports & games</span>
+              </div>
+              <div className="stat-card">
+                <span className="stat-value">{animatedStats.coaches}+</span>
+                <span className="stat-label">Super coaches</span>
+              </div>
             </div>
+          </div>
+          <div className="scroll-indicator">
+            <span className="scroll-text">Scroll to explore</span>
+            <span className="scroll-arrow">↓</span>
           </div>
         </section>
 
