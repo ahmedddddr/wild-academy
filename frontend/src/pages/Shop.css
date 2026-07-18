@@ -2,10 +2,23 @@
   max-width: 1200px;
   margin: 40px auto;
   padding: 40px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+  border-radius: 24px;
+  background: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 100%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.shop-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(135deg, #ff5400 0%, #ff7b00 100%);
 }
 
 .shop-header {
@@ -18,10 +31,9 @@
 }
 
 .shop-header h1 {
-  color: white;
-  font-size: 2.5rem;
+  color: #2d3748;
+  font-size: 2rem;
   font-weight: 700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   margin: 0;
   display: flex;
   align-items: center;
@@ -30,9 +42,9 @@
 
 .back-button {
   padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: white;
+  color: #2d3748;
+  border: 2px solid #e9ecef;
   border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
@@ -40,15 +52,17 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .back-button:hover {
-  background: rgba(255, 255, 255, 0.3);
+  border-color: #ff5400;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 84, 0, 0.15);
 }
 
 .points-display {
-  background: rgba(255, 215, 0, 0.2);
+  background: linear-gradient(135deg, #ff5400 0%, #ff7b00 100%);
   color: white;
   padding: 12px 24px;
   border-radius: 12px;
@@ -57,7 +71,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  border: 2px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(255, 84, 0, 0.2);
 }
 
 .shop-actions {
@@ -67,9 +81,9 @@
 
 .toggle-purchases-btn {
   padding: 14px 28px;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: white;
+  color: #2d3748;
+  border: 2px solid #e9ecef;
   border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
@@ -77,26 +91,30 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .toggle-purchases-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
+  border-color: #ff5400;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 84, 0, 0.15);
 }
 
 .prizes-section,
 .purchases-section {
-  background: rgba(255, 255, 255, 0.95);
+  background: white;
   padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .prizes-section h2,
 .purchases-section h2 {
-  color: #667eea;
+  color: #2d3748;
   margin-bottom: 25px;
   font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .prizes-grid,
@@ -141,7 +159,7 @@
 }
 
 .prize-category {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff5400 0%, #ff7b00 100%);
   color: white;
   padding: 6px 12px;
   border-radius: 8px;
@@ -174,12 +192,13 @@
   align-items: center;
   margin-bottom: 15px;
   padding: 12px;
-  background: #f8f9ff;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .prize-points {
-  color: #667eea;
+  color: #ff5400;
   font-weight: 700;
   font-size: 1.1rem;
   display: flex;
@@ -200,20 +219,20 @@
 .purchase-btn {
   width: 100%;
   padding: 14px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff5400 0%, #ff7b00 100%);
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(255, 84, 0, 0.2);
 }
 
 .purchase-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+  box-shadow: 0 6px 20px rgba(255, 84, 0, 0.3);
 }
 
 .purchase-btn:disabled {
@@ -230,7 +249,7 @@
 }
 
 .purchase-points {
-  color: #667eea;
+  color: #ff5400;
   font-weight: 600;
   margin-bottom: 8px;
 }
