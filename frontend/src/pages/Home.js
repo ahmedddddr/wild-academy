@@ -109,11 +109,6 @@ function Home() {
           <img src="/wild_logo.png" alt="Wild Academy" />
           <span>Wild Academy</span>
         </a>
-        <nav className="nav-menu">
-          <a href="#about">About</a>
-          <a href="#locations">Locations</a>
-          <a href="#activities">Activities</a>
-        </nav>
         <div className="nav-actions">
           <a href="tel:+201044505147" className="btn btn-ghost">Call us</a>
           <a href="/apply" className="btn btn-primary">Apply now</a>
@@ -146,72 +141,6 @@ function Home() {
           </div>
         </section>
 
-        <section className="section features" id="about">
-          <div className="section-header">
-            <span className="eyebrow">Why camp with us?</span>
-            <h2>Kids smile, sweat and shine here</h2>
-            <p className="section-lead">
-              We bring music, cheering squads and super coaches to every session. Every camper leaves stronger and happier.
-            </p>
-          </div>
-          <div className="feature-grid">
-            {features.map(feature => {
-              const Icon = feature.icon;
-              return (
-                <article key={feature.title} className="feature-card">
-                  <span className="feature-icon"><Icon /></span>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.description}</p>
-                </article>
-              );
-            })}
-          </div>
-        </section>
-
-        <section className="section locations" id="locations">
-          <div className="section-header">
-            <span className="eyebrow">Camp zones</span>
-            <h2>Epic spaces to run, splash and soar</h2>
-            <p className="section-lead">From giant fields to indoor arenas, every zone feels like a sports dream.</p>
-          </div>
-          <div className="card-grid">
-            {locations.map(location => (
-              <a
-                key={location.name}
-                href={location.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="location-card"
-              >
-                <div className="image-frame">
-                  <img src={location.image} alt={location.name} />
-                </div>
-                <div className="card-body">
-                  <h3>{location.name}</h3>
-                  <p>{location.summary}</p>
-                  <span className="click-hint">📍 Click to view location</span>
-                </div>
-              </a>
-            ))}
-          </div>
-        </section>
-
-        <section className="section activities" id="activities">
-          <div className="section-header">
-            <span className="eyebrow">Daily adventures</span>
-            <h2>Every day is action, music and teamwork</h2>
-            <p className="section-lead">Short bursts of coaching, colourful challenges and team cheers keep the fun rolling.</p>
-          </div>
-          <div className="activity-grid">
-            {activities.map(activity => (
-              <div key={activity} className="activity-card">
-                <span className="activity-marker" />
-                <span>{activity}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section className="cta-banner">
           <div className="cta-content">
             <h2>Ready for your kid&rsquo;s best camp story?</h2>
@@ -223,6 +152,55 @@ function Home() {
           </div>
         </section>
       </main>
+
+      <div className="slider-bar">
+        <div className="slider-content">
+          <div className="slider-section" id="about-slider">
+            <h3>About</h3>
+            <div className="slider-features">
+              {features.map(feature => {
+                const Icon = feature.icon;
+                return (
+                  <div key={feature.title} className="slider-feature-card">
+                    <span className="slider-feature-icon"><Icon /></span>
+                    <h4>{feature.title}</h4>
+                    <p>{feature.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="slider-section" id="locations-slider">
+            <h3>Locations</h3>
+            <div className="slider-locations">
+              {locations.map(location => (
+                <a
+                  key={location.name}
+                  href={location.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="slider-location-card"
+                >
+                  <img src={location.image} alt={location.name} />
+                  <span>{location.name}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="slider-section" id="activities-slider">
+            <h3>Activities</h3>
+            <div className="slider-activities">
+              {activities.map(activity => (
+                <div key={activity} className="slider-activity-item">
+                  <span>{activity}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
 
       <footer className="footer">
         <div className="footer-brand">
