@@ -196,27 +196,6 @@ function Home() {
               </div>
             </>
           )}
-
-          <div className="hero-content">
-            <span className="eyebrow">Super fun sports camps & weekend leagues</span>
-            <h1>Move, play and cheer all day long 🏃‍♂️🎉</h1>
-            <p>
-              Wild Academy Camps mix fun drills, challenge quests and happy team spirit. Kids jump in, level up and leave
-              with epic stories.
-            </p>
-            <div className="hero-actions">
-              <a href="/apply" className="btn btn-primary">Grab a camp spot</a>
-              <a href="#locations" className="btn btn-ghost">See cool venues</a>
-            </div>
-            <div className="hero-stats">
-              {stats.map(stat => (
-                <div key={stat.label} className="stat-card">
-                  <span className="stat-value">{stat.value}</span>
-                  <span className="stat-label">{stat.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </section>
 
         <section className="section features" id="about">

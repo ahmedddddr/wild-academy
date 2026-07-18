@@ -171,17 +171,23 @@ main {
 
 .hero {
   position: relative;
-  min-height: 80vh;
+  height: 50vh;
+  min-height: 300px;
+  max-height: 500px;
+  width: 100%;
   display: flex;
   align-items: center;
-  padding: var(--space-xl) clamp(1.5rem, 6vw, var(--space-lg));
+  justify-content: center;
+  padding: 0;
   background: linear-gradient(135deg, #ff8a3d, #ffd25f);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: #000000;
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  border-radius: var(--radius-md);
   overflow: hidden;
+  margin: var(--space-md) auto;
+  max-width: var(--max-width);
 }
 
 .hero-overlay {
@@ -783,7 +789,7 @@ main {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.9);
+  background: transparent;
   border: none;
   width: 50px;
   height: 50px;
@@ -793,16 +799,16 @@ main {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  color: var(--color-navy);
+  color: white;
   transition: all 0.3s ease;
   z-index: 10;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .hero-nav-btn:hover {
-  background: white;
+  background: rgba(255, 255, 255, 0.2);
   transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
 }
 
 .hero-nav-btn.prev {
