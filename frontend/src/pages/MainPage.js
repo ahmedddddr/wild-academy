@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './MainPage.css';
-import { FaTrophy, FaUserCircle, FaComments, FaCamera, FaCalendarAlt, FaClipboardList, FaBullseye, FaBell, FaShoppingCart, FaStar, FaFire, FaClock, FaArrowRight } from 'react-icons/fa';
+import { FaTrophy, FaUserCircle, FaComments, FaCamera, FaCalendarAlt, FaClipboardList, FaBullseye, FaBell, FaShoppingCart, FaStar, FaFire, FaClock, FaArrowRight, FaGem, FaChartLine, FaMedal } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
@@ -53,140 +53,138 @@ const MainPage = ({ user }) => {
 
   return (
     <div className="main-container">
-      <header className="header">
-        <div className="left-header">
-          <img src="/wild_logo.png" alt="Wild Academy Logo" className="logo" />
-          <div>
-            <h1 className="welcome-text">Welcome, {user.username} 👋</h1>
-            <p className="welcome-subtitle">{user.branch} • {user.ageGroup} years</p>
+      {/* Glass Header */}
+      <header className="glass-header">
+        <div className="header-content">
+          <div className="logo-section">
+            <img src="/wild_logo.png" alt="Wild Academy Logo" className="logo" />
+            <div className="user-info">
+              <h1 className="welcome-text">Welcome back, {user.username}</h1>
+              <div className="user-meta">
+                <span className="meta-tag">{user.branch}</span>
+                <span className="meta-tag">{user.ageGroup} years</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="right-header">
-          <div className="notification-icon" title="Notifications" onClick={() => navigate('/notifications')}>
-            <FaBell className="header-icon" />
-            {hasNotifications && <span className="notification-badge"></span>}
+          <div className="header-actions">
+            <div className="action-btn notification-btn" onClick={() => navigate('/notifications')}>
+              <FaBell />
+              {hasNotifications && <span className="pulse-dot"></span>}
+            </div>
+            <div className="action-btn profile-btn" onClick={() => navigate('/profile')}>
+              <FaUserCircle />
+            </div>
           </div>
-          <FaUserCircle className="header-icon" title="Profile" onClick={() => navigate('/profile')} />
         </div>
       </header>
 
-      {/* Quick Stats Section */}
-      <div className="quick-stats">
-        <div className="stat-card featured">
-          <div className="stat-icon-wrapper">
-            <FaStar className="stat-icon" />
+      {/* Hero Stats */}
+      <div className="hero-stats">
+        <div className="hero-card main-stat">
+          <div className="stat-glow"></div>
+          <div className="stat-icon-large">
+            <FaGem />
           </div>
-          <div className="stat-content">
-            <span className="stat-value">{userPoints}</span>
-            <span className="stat-label">Total Points</span>
+          <div className="stat-info">
+            <span className="stat-number">{userPoints}</span>
+            <span className="stat-text">Total Points</span>
           </div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-icon-wrapper secondary">
-            <FaFire className="stat-icon" />
-          </div>
-          <div className="stat-content">
-            <span className="stat-value">{todaySession ? todaySession.sessions.length : 0}</span>
-            <span className="stat-label">Today's Sessions</span>
-          </div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-icon-wrapper tertiary">
-            <FaBell className="stat-icon" />
-          </div>
-          <div className="stat-content">
-            <span className="stat-value">{hasNotifications ? 'New' : 'None'}</span>
-            <span className="stat-label">Notifications</span>
+          <div className="stat-trend">
+            <FaChartLine />
+            <span>Your Progress</span>
           </div>
         </div>
       </div>
 
-      {/* Quick Access Shortcuts */}
-      <div className="shortcuts-section">
-        <h2 className="section-title">Quick Access</h2>
-        <div className="shortcuts-grid">
-          <div className="shortcut-card primary" onClick={() => navigate('/schedule')}>
-            <div className="shortcut-icon">
-              <FaCalendarAlt />
-            </div>
-            <div className="shortcut-content">
-              <h3>My Schedule</h3>
-              <p>View your weekly timetable</p>
-            </div>
-            <FaArrowRight className="shortcut-arrow" />
+      {/* Action Grid */}
+      <div className="action-grid">
+        <div className="action-card schedule-card" onClick={() => navigate('/schedule')}>
+          <div className="card-bg"></div>
+          <div className="card-icon">
+            <FaCalendarAlt />
           </div>
-
-          <div className="shortcut-card secondary" onClick={() => navigate('/achievements')}>
-            <div className="shortcut-icon">
-              <FaClipboardList />
-            </div>
-            <div className="shortcut-content">
-              <h3>Achievements</h3>
-              <p>Track your progress</p>
-            </div>
-            <FaArrowRight className="shortcut-arrow" />
+          <div className="card-content">
+            <h3>Schedule</h3>
+            <p>View your timetable</p>
           </div>
+          <div className="card-arrow">
+            <FaArrowRight />
+          </div>
+        </div>
 
-          <div className="shortcut-card tertiary" onClick={() => navigate('/shop')}>
-            <div className="shortcut-icon">
-              <FaShoppingCart />
-            </div>
-            <div className="shortcut-content">
-              <h3>Prize Shop</h3>
-              <p>Spend your points</p>
-            </div>
-            <FaArrowRight className="shortcut-arrow" />
+        <div className="action-card achievements-card" onClick={() => navigate('/achievements')}>
+          <div className="card-bg"></div>
+          <div className="card-icon">
+            <FaMedal />
+          </div>
+          <div className="card-content">
+            <h3>Achievements</h3>
+            <p>Track your badges</p>
+          </div>
+          <div className="card-arrow">
+            <FaArrowRight />
+          </div>
+        </div>
+
+        <div className="action-card shop-card" onClick={() => navigate('/shop')}>
+          <div className="card-bg"></div>
+          <div className="card-icon">
+            <FaShoppingCart />
+          </div>
+          <div className="card-content">
+            <h3>Prize Shop</h3>
+            <p>Spend your points</p>
+          </div>
+          <div className="card-arrow">
+            <FaArrowRight />
           </div>
         </div>
       </div>
 
-      {/* All Features Grid */}
-      <div className="features-section">
-        <h2 className="section-title">All Features</h2>
-        <div className="features-grid">
-          <div className="feature-card" onClick={() => navigate('/media')}>
-            <FaCamera className="feature-icon" />
-            <h3>Lost and Found</h3>
-          </div>
-
-          <div className="feature-card" onClick={() => navigate('/chat')}>
-            <FaComments className="feature-icon" />
-            <h3>Messages</h3>
-          </div>
-
-          <div className="feature-card" onClick={() => navigate('/leaderboard')}>
-            <FaTrophy className="feature-icon" />
-            <h3>Leaderboard</h3>
-          </div>
-
-          <div className="feature-card" onClick={() => navigate('/activities')}>
-            <FaBullseye className="feature-icon" />
-            <h3>My Activities</h3>
-          </div>
+      {/* Secondary Features */}
+      <div className="features-row">
+        <div className="mini-card" onClick={() => navigate('/media')}>
+          <FaCamera />
+          <span>Gallery</span>
+        </div>
+        <div className="mini-card" onClick={() => navigate('/chat')}>
+          <FaComments />
+          <span>Messages</span>
+        </div>
+        <div className="mini-card" onClick={() => navigate('/leaderboard')}>
+          <FaTrophy />
+          <span>Leaderboard</span>
+        </div>
+        <div className="mini-card" onClick={() => navigate('/activities')}>
+          <FaBullseye />
+          <span>Activities</span>
         </div>
       </div>
 
-      {/* Today's Session */}
-      <section className="today-session">
-        <div className="session-header">
-          <FaClock className="session-header-icon" />
-          <h2>Today's Session</h2>
+      {/* Today's Schedule */}
+      <div className="schedule-section">
+        <div className="section-header">
+          <div className="section-icon">
+            <FaClock />
+          </div>
+          <h2>Today's Schedule</h2>
         </div>
         {todaySession ? (
-          <div className="sessions-list">
+          <div className="schedule-list">
             {todaySession.sessions.map((session, i) => (
-              <div key={i} className="session-box">
-                <span className="session-time">{session.time}</span>
-                <span className="session-activity">{session.activity}</span>
+              <div key={i} className="schedule-item">
+                <div className="time-badge">{session.time}</div>
+                <div className="activity-name">{session.activity}</div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="no-session">
-            <p>No session scheduled for today.</p>
+          <div className="empty-state">
+            <FaClock />
+            <p>No sessions today</p>
           </div>
         )}
-      </section>
+      </div>
     </div>
   );
 };
