@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import './Home.css';
 import backgroundImage from '../background.png';
@@ -8,16 +8,8 @@ import {
   FaInstagram,
   FaLeaf,
   FaUsers,
-  FaWhatsapp,
-  FaChevronLeft,
-  FaChevronRight,
-  FaHome,
-  FaInfoCircle,
-  FaMapMarkerAlt,
-  FaRunning
+  FaWhatsapp
 } from 'react-icons/fa';
-
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
 
 const stats = [
   { label: 'Happy campers', value: '500+' },
@@ -110,49 +102,6 @@ const socials = [
 ];
 
 function Home() {
-  const [ads, setAds] = useState([]);
-  const [currentAdIndex, setCurrentAdIndex] = useState(0);
-  const [activeSection, setActiveSection] = useState('home');
-
-  useEffect(() => {
-    fetchAds();
-  }, []);
-
-  useEffect(() => {
-    if (ads.length > 1) {
-      const interval = setInterval(() => {
-        setCurrentAdIndex((prev) => (prev + 1) % ads.length);
-      }, 5000); // Auto-rotate every 5 seconds
-      return () => clearInterval(interval);
-    }
-  }, [ads]);
-
-  const fetchAds = async () => {
-    try {
-      const response = await fetch(`${API_URL}/api/ads`);
-      const data = await response.json();
-      setAds(data);
-    } catch (error) {
-      console.error('Error fetching ads:', error);
-    }
-  };
-
-  const nextAd = () => {
-    setCurrentAdIndex((prev) => (prev + 1) % ads.length);
-  };
-
-  const prevAd = () => {
-    setCurrentAdIndex((prev) => (prev - 1 + ads.length) % ads.length);
-  };
-
-  const scrollToSection = (sectionId) => {
-    setActiveSection(sectionId);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className="home">
       <header className="top-nav" id="home">
@@ -160,6 +109,11 @@ function Home() {
           <img src="/wild_logo.png" alt="Wild Academy" />
           <span>Wild Academy</span>
         </a>
+        <nav className="nav-menu">
+          <a href="#about">About</a>
+          <a href="#locations">Locations</a>
+          <a href="#activities">Activities</a>
+        </nav>
         <div className="nav-actions">
           <a href="tel:+201044505147" className="btn btn-ghost">Call us</a>
           <a href="/apply" className="btn btn-primary">Apply now</a>
@@ -168,34 +122,28 @@ function Home() {
       </header>
 
       <main>
-        <section 
-          className="hero" 
-          style={{ 
-            backgroundImage: ads.length > 0 ? `url(${API_URL}${ads[currentAdIndex]?.image})` : `url(${backgroundImage})` 
-          }}
-        >
+        <section className="hero" style={{ backgroundImage: `url(${backgroundImage})` }}>
           <div className="hero-overlay" />
-          
-          {/* Background Navigation Controls */}
-          {ads.length > 1 && (
-            <>
-              <button className="hero-nav-btn prev" onClick={prevAd}>
-                <FaChevronLeft />
-              </button>
-              <button className="hero-nav-btn next" onClick={nextAd}>
-                <FaChevronRight />
-              </button>
-              <div className="hero-dots">
-                {ads.map((_, index) => (
-                  <span
-                    key={index}
-                    className={`hero-dot ${index === currentAdIndex ? 'active' : ''}`}
-                    onClick={() => setCurrentAdIndex(index)}
-                  />
-                ))}
-              </div>
-            </>
-          )}
+          <div className="hero-content">
+            <span className="eyebrow">Super fun sports camps & weekend leagues</span>
+            <h1>Move, play and cheer all day long 🏃‍♂️🎉</h1>
+            <p>
+              Wild Academy Camps mix fun drills, challenge quests and happy team spirit. Kids jump in, level up and leave
+              with epic stories.
+            </p>
+            <div className="hero-actions">
+              <a href="/apply" className="btn btn-primary">Grab a camp spot</a>
+              <a href="#locations" className="btn btn-ghost">See cool venues</a>
+            </div>
+            <div className="hero-stats">
+              {stats.map(stat => (
+                <div key={stat.label} className="stat-card">
+                  <span className="stat-value">{stat.value}</span>
+                  <span className="stat-label">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
         <section className="section features" id="about">
@@ -307,38 +255,6 @@ function Home() {
         </div>
         <p className="footer-note">© 2025 Wild Academy. All rights reserved.</p>
       </footer>
-
-      {/* Bottom Navigation Bar */}
-      <div className="bottom-nav">
-        <button
-          className={`nav-item ${activeSection === 'home' ? 'active' : ''}`}
-          onClick={() => scrollToSection('home')}
-        >
-          <FaHome />
-          <span>Home</span>
-        </button>
-        <button
-          className={`nav-item ${activeSection === 'about' ? 'active' : ''}`}
-          onClick={() => scrollToSection('about')}
-        >
-          <FaInfoCircle />
-          <span>About</span>
-        </button>
-        <button
-          className={`nav-item ${activeSection === 'locations' ? 'active' : ''}`}
-          onClick={() => scrollToSection('locations')}
-        >
-          <FaMapMarkerAlt />
-          <span>Locations</span>
-        </button>
-        <button
-          className={`nav-item ${activeSection === 'activities' ? 'active' : ''}`}
-          onClick={() => scrollToSection('activities')}
-        >
-          <FaRunning />
-          <span>Activities</span>
-        </button>
-      </div>
     </div>
   );
 }
