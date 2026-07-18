@@ -217,22 +217,25 @@ main {
   gap: 0.4rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: rgba(119, 255, 41, 0.72);
 }
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(2.6rem, 4vw, 3.6rem);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 800;
 }
 
 .hero p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 .hero-actions {
@@ -263,16 +266,17 @@ main {
 
 .stat-value {
   display: block;
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: 1.8rem;
+  font-weight: 800;
   margin-bottom: 0.25rem;
 }
 
 .stat-label {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
 }
 
 .section {
@@ -287,15 +291,17 @@ main {
 
 .section h2 {
   margin: 0.5rem 0 0;
-  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-size: clamp(2.2rem, 3.5vw, 2.8rem);
   color: var(--color-navy);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  font-weight: 800;
 }
 
 .section-lead {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: var(--color-muted);
+  line-height: 1.6;
 }
 
 .feature-grid {
@@ -334,13 +340,16 @@ main {
 
 .feature-card h3 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: var(--color-navy);
+  font-weight: 700;
 }
 
 .feature-card p {
   margin: 0;
   color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .card-grid {
@@ -388,14 +397,16 @@ main {
 
 .card-body h3 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--color-navy);
+  font-weight: 700;
 }
 
 .card-body p {
   margin: 0;
   color: var(--color-muted);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .click-hint {
@@ -445,7 +456,8 @@ main {
   border-radius: var(--radius-sm);
   background: linear-gradient(120deg, rgba(92, 160, 255, 0.18), rgba(49, 216, 138, 0.18));
   border: 1px solid rgba(92, 160, 255, 0.22);
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1rem;
   color: var(--color-navy);
 }
 
@@ -475,20 +487,21 @@ main {
 
 .testimonial-quote {
   margin: 0;
-  font-size: 1.02rem;
+  font-size: 1.05rem;
   color: var(--color-navy);
+  line-height: 1.6;
 }
 
 .testimonial-meta {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--color-muted);
 }
 
 .testimonial-name {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-navy);
 }
 
@@ -510,13 +523,16 @@ main {
 
 .cta-content h2 {
   margin: 0 0 0.5rem;
-  font-size: clamp(1.9rem, 2.8vw, 2.4rem);
-  letter-spacing: -0.01em;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  letter-spacing: -0.02em;
+  font-weight: 800;
 }
 
 .cta-content p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 .cta-actions {
@@ -565,8 +581,9 @@ main {
 .footer-title {
   display: block;
   margin-bottom: 0.4rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #fff;
+  font-size: 1rem;
 }
 
 .footer-column {
@@ -577,7 +594,7 @@ main {
 
 .footer-column a {
   color: rgba(255, 255, 255, 0.78);
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .footer-column a:hover {
@@ -608,7 +625,7 @@ main {
 
 .footer-note {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.48);
   text-align: center;
 }

@@ -160,11 +160,6 @@ function Home() {
           <img src="/wild_logo.png" alt="Wild Academy" />
           <span>Wild Academy</span>
         </a>
-        <nav className="nav-menu">
-          <a href="#about">About</a>
-          <a href="#locations">Locations</a>
-          <a href="#activities">Activities</a>
-        </nav>
         <div className="nav-actions">
           <a href="tel:+201044505147" className="btn btn-ghost">Call us</a>
           <a href="/apply" className="btn btn-primary">Apply now</a>
