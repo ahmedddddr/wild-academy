@@ -20,7 +20,7 @@ const notificationSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ['info', 'event', 'alert', 'achievement'],
+    enum: ['info', 'event', 'alert', 'achievement', 'redeem'],
     default: 'info'
   },
   priority: {

@@ -1,5 +1,6 @@
 const Prize = require('../models/Prize');
 const User = require('../models/User');
+const Notification = require('../models/Notification');
 
 // Create a new prize (admin only)
 exports.createPrize = async (req, res) => {
@@ -149,8 +150,19 @@ exports.purchasePrize = async (req, res) => {
     prize.stock = prize.stock - 1;
     await prize.save();
 
-    res.json({ 
-      message: 'Prize purchased successfully', 
+    // Create notification for admin about the redeem
+    const notification = new Notification({
+      title: 'New Prize Redeem',
+      message: `${user.name} (${user.username}) has redeemed ${prize.name} for ${prize.points} points`,
+      targetBranch: user.branch,
+      targetAgeGroup: user.ageGroup,
+      type: 'redeem',
+      priority: 'normal'
+    });
+    await notification.save();
+
+    res.json({
+      message: 'Prize purchased successfully',
       remainingPoints: user.points,
       prize: prize.name
     });
