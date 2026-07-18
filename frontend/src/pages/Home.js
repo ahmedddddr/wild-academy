@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './Home.css';
 import backgroundImage from '../background.png';
@@ -8,8 +8,16 @@ import {
   FaInstagram,
   FaLeaf,
   FaUsers,
-  FaWhatsapp
+  FaWhatsapp,
+  FaChevronLeft,
+  FaChevronRight,
+  FaHome,
+  FaInfoCircle,
+  FaMapMarkerAlt,
+  FaRunning
 } from 'react-icons/fa';
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
 
 const stats = [
   { label: 'Happy campers', value: '500+' },
@@ -102,6 +110,40 @@ const socials = [
 ];
 
 function Home() {
+  const [ads, setAds] = useState([]);
+  const [currentAdIndex, setCurrentAdIndex] = useState(0);
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    fetchAds();
+  }, []);
+
+  const fetchAds = async () => {
+    try {
+      const response = await fetch(`${API_URL}/api/ads`);
+      const data = await response.json();
+      setAds(data);
+    } catch (error) {
+      console.error('Error fetching ads:', error);
+    }
+  };
+
+  const nextAd = () => {
+    setCurrentAdIndex((prev) => (prev + 1) % ads.length);
+  };
+
+  const prevAd = () => {
+    setCurrentAdIndex((prev) => (prev - 1 + ads.length) % ads.length);
+  };
+
+  const scrollToSection = (sectionId) => {
+    setActiveSection(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="home">
       <header className="top-nav" id="home">
@@ -124,6 +166,47 @@ function Home() {
       <main>
         <section className="hero" style={{ backgroundImage: `url(${backgroundImage})` }}>
           <div className="hero-overlay" />
+          
+          {/* Ad Slider */}
+          {ads.length > 0 && (
+            <div className="ad-slider">
+              <div className="ad-slider-container">
+                {ads.map((ad, index) => (
+                  <div
+                    key={ad._id}
+                    className={`ad-slide ${index === currentAdIndex ? 'active' : ''}`}
+                    onClick={() => ad.link && window.open(ad.link, '_blank')}
+                  >
+                    <img src={`${API_URL}${ad.image}`} alt={ad.title} />
+                    <div className="ad-content">
+                      <h3>{ad.title}</h3>
+                      {ad.description && <p>{ad.description}</p>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {ads.length > 1 && (
+                <>
+                  <button className="ad-nav-btn prev" onClick={prevAd}>
+                    <FaChevronLeft />
+                  </button>
+                  <button className="ad-nav-btn next" onClick={nextAd}>
+                    <FaChevronRight />
+                  </button>
+                </>
+              )}
+              <div className="ad-dots">
+                {ads.map((_, index) => (
+                  <span
+                    key={index}
+                    className={`ad-dot ${index === currentAdIndex ? 'active' : ''}`}
+                    onClick={() => setCurrentAdIndex(index)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="hero-content">
             <span className="eyebrow">Super fun sports camps & weekend leagues</span>
             <h1>Move, play and cheer all day long 🏃‍♂️🎉</h1>
@@ -255,6 +338,38 @@ function Home() {
         </div>
         <p className="footer-note">© 2025 Wild Academy. All rights reserved.</p>
       </footer>
+
+      {/* Bottom Navigation Bar */}
+      <div className="bottom-nav">
+        <button
+          className={`nav-item ${activeSection === 'home' ? 'active' : ''}`}
+          onClick={() => scrollToSection('home')}
+        >
+          <FaHome />
+          <span>Home</span>
+        </button>
+        <button
+          className={`nav-item ${activeSection === 'about' ? 'active' : ''}`}
+          onClick={() => scrollToSection('about')}
+        >
+          <FaInfoCircle />
+          <span>About</span>
+        </button>
+        <button
+          className={`nav-item ${activeSection === 'locations' ? 'active' : ''}`}
+          onClick={() => scrollToSection('locations')}
+        >
+          <FaMapMarkerAlt />
+          <span>Locations</span>
+        </button>
+        <button
+          className={`nav-item ${activeSection === 'activities' ? 'active' : ''}`}
+          onClick={() => scrollToSection('activities')}
+        >
+          <FaRunning />
+          <span>Activities</span>
+        </button>
+      </div>
     </div>
   );
 }

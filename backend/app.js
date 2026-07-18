@@ -12,6 +12,7 @@ const Badge = require('./models/Badge');
 const Leaderboard = require('./models/Leaderboard');
 const Achievement = require('./models/Achievement');
 const User = require('./models/User');
+const Ad = require('./models/Ad');
 
 // ✅ Routes
 const adminRoutes = require('./routes/adminRoutes');
@@ -25,6 +26,7 @@ const leaderboardRoutes = require('./routes/leaderboardRoutes');
 const achievementRoutes = require('./routes/achievementRoutes');
 const badgeRoutes = require('./routes/badgeRoutes');
 const prizeRoutes = require('./routes/prizeRoutes');
+const adRoutes = require('./routes/adRoutes');
 
 dotenv.config();
 
@@ -61,6 +63,7 @@ app.use('/api/leaderboard', leaderboardRoutes);
 app.use('/api/achievements', achievementRoutes);
 app.use('/api/badges', badgeRoutes);
 app.use('/api/prizes', prizeRoutes);
+app.use('/api/ads', adRoutes);
 
 // ✅ Setup multer storage engine for media uploads
 // Create uploads directory if it doesn't exist

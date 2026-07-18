@@ -26,6 +26,7 @@ import LeaderboardManager from './pages/LeaderboardManager';
 import AchievementManager from './pages/AchievementManager';
 import Shop from './pages/Shop';
 import PrizeManager from './pages/PrizeManager';
+import AdManager from './pages/AdManager';
 import Profile from './pages/Profile';
 function App() {
   // Keep kid login persistent
@@ -74,6 +75,7 @@ const [user, setUser] = useState(() => {
 <Route path="/admin/leaderboard" element={<LeaderboardManager />} />
 <Route path="/admin/achievements" element={<AchievementManager />} />
 <Route path="/admin/prizes" element={<PrizeManager />} />
+<Route path="/admin/ads" element={<AdManager />} />
 
 
 
