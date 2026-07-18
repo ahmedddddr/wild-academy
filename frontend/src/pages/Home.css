@@ -761,120 +761,69 @@ main {
   }
 }
 
-/* Ad Slider */
-.ad-slider {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto 20px;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-}
-
-.ad-slider-container {
-  position: relative;
-  width: 100%;
-  height: 200px;
-}
-
-.ad-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  cursor: pointer;
-}
-
-.ad-slide.active {
-  opacity: 1;
-}
-
-.ad-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.ad-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  padding: 20px;
-  color: white;
-}
-
-.ad-content h3 {
-  margin: 0 0 5px 0;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-.ad-content p {
-  margin: 0;
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-.ad-nav-btn {
+/* Hero Background Navigation */
+.hero-nav-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.9);
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: var(--color-navy);
   transition: all 0.3s ease;
   z-index: 10;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
-.ad-nav-btn:hover {
+.hero-nav-btn:hover {
   background: white;
   transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
 }
 
-.ad-nav-btn.prev {
-  left: 10px;
+.hero-nav-btn.prev {
+  left: 20px;
 }
 
-.ad-nav-btn.next {
-  right: 10px;
+.hero-nav-btn.next {
+  right: 20px;
 }
 
-.ad-dots {
+.hero-dots {
   position: absolute;
-  bottom: 10px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 8px;
+  gap: 12px;
   z-index: 10;
 }
 
-.ad-dot {
-  width: 10px;
-  height: 10px;
+.hero-dot {
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.8);
 }
 
-.ad-dot.active {
+.hero-dot.active {
   background: white;
-  transform: scale(1.2);
+  transform: scale(1.3);
+  border-color: white;
+}
+
+.hero-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
 }
 
 /* Bottom Navigation */
@@ -925,29 +874,30 @@ main {
   color: var(--color-emerald-dark);
 }
 
-/* Mobile Responsive for Ad Slider and Bottom Nav */
+/* Mobile Responsive for Hero Navigation and Bottom Nav */
 @media (max-width: 768px) {
-  .ad-slider {
-    max-width: 100%;
-    margin-bottom: 16px;
+  .hero-nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
   }
 
-  .ad-slider-container {
-    height: 150px;
+  .hero-nav-btn.prev {
+    left: 12px;
   }
 
-  .ad-content h3 {
-    font-size: 1rem;
+  .hero-nav-btn.next {
+    right: 12px;
   }
 
-  .ad-content p {
-    font-size: 0.8rem;
+  .hero-dots {
+    bottom: 20px;
+    gap: 8px;
   }
 
-  .ad-nav-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 1rem;
+  .hero-dot {
+    width: 10px;
+    height: 10px;
   }
 
   .bottom-nav {
@@ -968,29 +918,26 @@ main {
 }
 
 @media (max-width: 480px) {
-  .ad-slider-container {
-    height: 120px;
+  .hero-nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
   }
 
-  .ad-content {
-    padding: 12px;
+  .hero-nav-btn.prev {
+    left: 8px;
   }
 
-  .ad-content h3 {
-    font-size: 0.9rem;
+  .hero-nav-btn.next {
+    right: 8px;
   }
 
-  .ad-content p {
-    font-size: 0.75rem;
+  .hero-dots {
+    bottom: 16px;
+    gap: 6px;
   }
 
-  .ad-nav-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 0.9rem;
-  }
-
-  .ad-dot {
+  .hero-dot {
     width: 8px;
     height: 8px;
   }

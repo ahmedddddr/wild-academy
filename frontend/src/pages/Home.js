@@ -118,6 +118,15 @@ function Home() {
     fetchAds();
   }, []);
 
+  useEffect(() => {
+    if (ads.length > 1) {
+      const interval = setInterval(() => {
+        setCurrentAdIndex((prev) => (prev + 1) % ads.length);
+      }, 5000); // Auto-rotate every 5 seconds
+      return () => clearInterval(interval);
+    }
+  }, [ads]);
+
   const fetchAds = async () => {
     try {
       const response = await fetch(`${API_URL}/api/ads`);
@@ -164,47 +173,33 @@ function Home() {
       </header>
 
       <main>
-        <section className="hero" style={{ backgroundImage: `url(${backgroundImage})` }}>
+        <section 
+          className="hero" 
+          style={{ 
+            backgroundImage: ads.length > 0 ? `url(${API_URL}${ads[currentAdIndex]?.image})` : `url(${backgroundImage})` 
+          }}
+        >
           <div className="hero-overlay" />
           
-          {/* Ad Slider */}
-          {ads.length > 0 && (
-            <div className="ad-slider">
-              <div className="ad-slider-container">
-                {ads.map((ad, index) => (
-                  <div
-                    key={ad._id}
-                    className={`ad-slide ${index === currentAdIndex ? 'active' : ''}`}
-                    onClick={() => ad.link && window.open(ad.link, '_blank')}
-                  >
-                    <img src={`${API_URL}${ad.image}`} alt={ad.title} />
-                    <div className="ad-content">
-                      <h3>{ad.title}</h3>
-                      {ad.description && <p>{ad.description}</p>}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              {ads.length > 1 && (
-                <>
-                  <button className="ad-nav-btn prev" onClick={prevAd}>
-                    <FaChevronLeft />
-                  </button>
-                  <button className="ad-nav-btn next" onClick={nextAd}>
-                    <FaChevronRight />
-                  </button>
-                </>
-              )}
-              <div className="ad-dots">
+          {/* Background Navigation Controls */}
+          {ads.length > 1 && (
+            <>
+              <button className="hero-nav-btn prev" onClick={prevAd}>
+                <FaChevronLeft />
+              </button>
+              <button className="hero-nav-btn next" onClick={nextAd}>
+                <FaChevronRight />
+              </button>
+              <div className="hero-dots">
                 {ads.map((_, index) => (
                   <span
                     key={index}
-                    className={`ad-dot ${index === currentAdIndex ? 'active' : ''}`}
+                    className={`hero-dot ${index === currentAdIndex ? 'active' : ''}`}
                     onClick={() => setCurrentAdIndex(index)}
                   />
                 ))}
               </div>
-            </div>
+            </>
           )}
 
           <div className="hero-content">
