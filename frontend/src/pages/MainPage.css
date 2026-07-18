@@ -534,148 +534,192 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .main-container {
-    padding: 12px;
+    padding: 8px;
   }
 
   .header {
     flex-direction: row;
-    gap: 10px;
-    padding: 16px 20px;
-    border-radius: 20px;
-    margin-bottom: 20px;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 16px;
+    margin-bottom: 16px;
   }
 
   .left-header {
     flex-direction: row;
-    gap: 12px;
+    gap: 10px;
     flex: 1;
   }
 
   .logo {
-    height: 45px;
+    height: 36px;
     margin-right: 0;
-    padding: 6px;
+    padding: 4px;
   }
 
   .welcome-text {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
   }
 
   .welcome-subtitle {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   .right-header {
-    gap: 8px;
+    gap: 6px;
   }
 
   .header-icon {
-    font-size: 24px;
-    padding: 12px;
+    font-size: 20px;
+    padding: 8px;
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .notification-badge {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     top: 0;
     right: 0;
   }
 
   .quick-stats {
     grid-template-columns: 1fr;
-    gap: 12px;
-    margin-bottom: 25px;
+    gap: 8px;
+    margin-bottom: 16px;
   }
 
   .stat-card {
-    padding: 20px;
+    padding: 12px 16px;
+    border-radius: 14px;
   }
 
   .stat-icon-wrapper {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
   }
 
   .stat-icon {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   .stat-value {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
   }
 
   .section-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  .shortcuts-section {
     margin-bottom: 16px;
   }
 
   .shortcuts-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 8px;
   }
 
   .shortcut-card {
-    padding: 20px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    gap: 12px;
   }
 
   .shortcut-icon {
-    width: 48px;
-    height: 48px;
-    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+    border-radius: 12px;
   }
 
   .shortcut-content h3 {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .shortcut-content p {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .shortcut-arrow {
+    font-size: 1rem;
+  }
+
+  .features-section {
+    margin-bottom: 16px;
   }
 
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 8px;
   }
 
   .feature-card {
-    padding: 20px 16px;
+    padding: 12px 10px;
+    border-radius: 14px;
+    gap: 8px;
   }
 
   .feature-icon {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   .feature-card h3 {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .today-session {
-    padding: 20px 24px;
-    margin-bottom: 20px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    border-radius: 16px;
   }
 
   .session-header {
-    margin-bottom: 16px;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .session-header-icon {
+    font-size: 1.2rem;
   }
 
   .today-session h2 {
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+
+  .sessions-list {
+    gap: 8px;
   }
 
   .session-box {
-    padding: 12px 16px;
-    font-size: 0.9rem;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    border-radius: 10px;
+    gap: 8px;
   }
 
   .session-time {
-    min-width: 70px;
+    min-width: 60px;
+    font-size: 0.8rem;
+  }
+
+  .session-activity {
+    font-size: 0.85rem;
+  }
+
+  .no-session {
+    padding: 16px;
     font-size: 0.85rem;
   }
 
@@ -722,85 +766,166 @@
 
 @media (max-width: 480px) {
   .main-container {
-    padding: 8px;
+    padding: 6px;
   }
 
   .header {
-    padding: 14px 16px;
-    border-radius: 16px;
-    margin-bottom: 18px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    margin-bottom: 12px;
   }
 
   .logo {
-    height: 38px;
-    padding: 5px;
+    height: 32px;
+    padding: 3px;
   }
 
   .welcome-text {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+  }
+
+  .welcome-subtitle {
+    font-size: 0.7rem;
   }
 
   .header-icon {
-    font-size: 20px;
-    padding: 10px;
-    width: 42px;
-    height: 42px;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
   }
 
-  .notification-badge {
-    width: 8px;
-    height: 8px;
+  .quick-stats {
+    gap: 6px;
+    margin-bottom: 12px;
   }
 
-  .dashboard-title {
+  .stat-card {
+    padding: 10px 14px;
+    border-radius: 12px;
+  }
+
+  .stat-icon-wrapper {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .stat-icon {
     font-size: 1.2rem;
-    margin-bottom: 16px;
   }
 
-  .dashboard-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .stat-value {
+    font-size: 1.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+  }
+
+  .section-title {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .shortcuts-section {
+    margin-bottom: 12px;
+  }
+
+  .shortcuts-grid {
+    gap: 6px;
+  }
+
+  .shortcut-card {
+    padding: 10px 14px;
+    border-radius: 12px;
     gap: 10px;
-    margin-bottom: 20px;
   }
 
-  .dashboard-card {
-    padding: 18px 10px;
-    border-radius: 14px;
-    min-height: 90px;
+  .shortcut-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+    border-radius: 10px;
   }
 
-  .dashboard-icon {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
+  .shortcut-content h3 {
+    font-size: 0.9rem;
   }
 
-  .dashboard-card p {
-    font-size: 0.85rem;
+  .shortcut-content p {
+    font-size: 0.7rem;
+  }
+
+  .shortcut-arrow {
+    font-size: 0.9rem;
+  }
+
+  .features-section {
+    margin-bottom: 12px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .feature-card {
+    padding: 10px 8px;
+    border-radius: 12px;
+    gap: 6px;
+  }
+
+  .feature-icon {
+    font-size: 1.4rem;
+  }
+
+  .feature-card h3 {
+    font-size: 0.75rem;
   }
 
   .today-session {
     padding: 14px 16px;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
     border-radius: 14px;
   }
 
+  .session-header {
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .session-header-icon {
+    font-size: 1.1rem;
+  }
+
   .today-session h2 {
-    font-size: 1rem;
-    margin-bottom: 12px;
+    font-size: 0.95rem;
+  }
+
+  .sessions-list {
+    gap: 6px;
   }
 
   .session-box {
-    font-size: 0.85rem;
-    padding: 10px 12px;
-    border-radius: 8px;
-  }
-
-  .day-card {
     padding: 8px 12px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+    gap: 6px;
   }
 
-  .session-card {
-    font-size: 0.85rem;
+  .session-time {
+    min-width: 55px;
+    font-size: 0.75rem;
+  }
+
+  .session-activity {
+    font-size: 0.8rem;
+  }
+
+  .no-session {
+    padding: 12px;
+    font-size: 0.8rem;
   }
 }
 
