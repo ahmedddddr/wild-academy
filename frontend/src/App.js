@@ -19,6 +19,7 @@ import AdminChat from './pages/AdminChat';
 import SchedulePage from './pages/SchedulePage';
 import NotificationsPage from './pages/NotificationsPage';
 import AdminNotifications from './pages/AdminNotifications';
+import CoursePage from './pages/CoursePage';
 import Leaderboard from './pages/Leaderboard';
 import Achievements from './pages/Achievements';
 import BadgeManager from './pages/BadgeManager';
@@ -44,6 +45,7 @@ const [user, setUser] = useState(() => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/apply" element={<ApplyForm />} />
         <Route path="/login" element={<Login onLogin={setUser} />} />
+        <Route path="/course" element={<CoursePage />} />
 
         {/* Kid dashboard route (protected) */}
         <Route path="/dashboard" element={
