@@ -20,7 +20,7 @@ const CoursePage = () => {
       <header className="course-header">
         <div className="header-content">
           <div className="logo-wrapper">
-            <div className="logo-icon">🦁</div>
+            <img src="/wild_logo.png" alt="Wild Academy Logo" className="logo-icon" />
             <div className="logo-text">
               <span className="logo-name">Wild</span>
               <span className="logo-academy">Academy</span>
