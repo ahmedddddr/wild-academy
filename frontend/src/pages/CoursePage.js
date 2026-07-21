@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CoursePage.css';
 
 const CoursePage = () => {
   const [activeSection, setActiveSection] = useState('intro');
   const navigate = useNavigate();
+  const contentDisplayRef = useRef(null);
 
   const sections = [
     { id: 'intro', title: 'Introduction', image: '/ai course/first page.png', icon: '📚' },
@@ -30,6 +31,13 @@ const CoursePage = () => {
     }
   };
 
+  const handleSectionClick = (sectionId) => {
+    setActiveSection(sectionId);
+    if (contentDisplayRef.current) {
+      contentDisplayRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="course-container">
       <header className="course-header">
@@ -52,7 +60,7 @@ const CoursePage = () => {
             <div
               key={section.id}
               className={`nav-card ${activeSection === section.id ? 'active' : ''}`}
-              onClick={() => setActiveSection(section.id)}
+              onClick={() => handleSectionClick(section.id)}
             >
               <span className="nav-icon">{section.icon}</span>
               <span className="nav-title">{section.title}</span>
@@ -62,7 +70,7 @@ const CoursePage = () => {
         </div>
 
         {/* Content Display with Navigation */}
-        <div className="content-display">
+        <div className="content-display" ref={contentDisplayRef}>
           <button 
             className="nav-button prev-button" 
             onClick={goToPrevious}
@@ -91,6 +99,7 @@ const CoursePage = () => {
                   className="game-iframe"
                   title={sections.find(s => s.id === activeSection)?.title}
                   allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone"
+                  sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
                 />
               </div>
             ) : (
@@ -99,6 +108,10 @@ const CoursePage = () => {
                   src={sections.find(s => s.id === activeSection)?.image}
                   alt={sections.find(s => s.id === activeSection)?.title}
                   className="section-image"
+                  onError={(e) => {
+                    console.error('Image failed to load:', sections.find(s => s.id === activeSection)?.image);
+                    e.target.style.display = 'none';
+                  }}
                 />
               </div>
             )}
