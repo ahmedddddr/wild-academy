@@ -484,7 +484,22 @@
   }
 
   .fullscreen-nav {
-    display: none;
+    position: relative;
+    top: auto;
+    transform: none;
+    left: auto;
+    right: auto;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  .prev-button.fullscreen-nav {
+    left: auto;
+  }
+
+  .next-button.fullscreen-nav {
+    right: auto;
   }
 
   .game-iframe-container {
@@ -568,7 +583,22 @@
   }
 
   .fullscreen-nav {
-    display: none;
+    position: relative;
+    top: auto;
+    transform: none;
+    left: auto;
+    right: auto;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    width: 100%;
+  }
+
+  .prev-button.fullscreen-nav {
+    left: auto;
+  }
+
+  .next-button.fullscreen-nav {
+    right: auto;
   }
 
   .fullscreen-button {
