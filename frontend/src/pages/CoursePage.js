@@ -18,16 +18,16 @@ const CoursePage = () => {
   return (
     <div className="course-container">
       <header className="course-header">
-        <button className="back-button" onClick={() => navigate('/main')}>
-          <FaArrowLeft />
-        </button>
         <div className="header-content">
-          <div className="header-icon-wrapper">
-            <FaBook className="header-icon" />
+          <div className="logo-wrapper">
+            <div className="logo-icon">🦁</div>
+            <div className="logo-text">
+              <span className="logo-name">Wild</span>
+              <span className="logo-academy">Academy</span>
+            </div>
           </div>
           <h1 className="course-title">Computer & AI Course</h1>
         </div>
-        <div className="header-spacer"></div>
       </header>
 
       <div className="course-content">
