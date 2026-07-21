@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
-import { FaArrowLeft, FaBook, FaRobot, FaLaptopCode, FaMicrochip, FaGamepad } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './CoursePage.css';
 
 const CoursePage = () => {
-  const [activeTab, setActiveTab] = useState('pdf');
+  const [activeSection, setActiveSection] = useState('intro');
   const navigate = useNavigate();
 
   const sections = [
-    { id: 'hardware', title: 'Hardware & Software', icon: FaMicrochip },
-    { id: 'os', title: 'Operating Systems', icon: FaLaptopCode },
-    { id: 'binary', title: 'Binary Language', icon: FaBook },
-    { id: 'programming', title: 'Programming Fields', icon: FaLaptopCode },
-    { id: 'ai', title: 'Introduction to AI', icon: FaRobot }
+    { id: 'intro', title: 'Introduction', image: '/ai course/first page.png', icon: '📚' },
+    { id: 'hardware', title: 'Hardware & Software', image: '/ai course/hardware and software.png', icon: '💻' },
+    { id: 'os', title: 'Operating Systems', image: '/ai course/os.png', icon: '⚙️' },
+    { id: 'binary', title: 'Binary Language', image: '/ai course/binary.png', icon: '🔢' },
+    { id: 'fields', title: '5 Programming Fields', image: '/ai course/5 fields.png', icon: '🎯' },
+    { id: 'ai-intro', title: 'Introduction to AI', image: '/ai course/ai intro.png', icon: '🤖' },
+    { id: 'quickdraw', title: 'Quick Draw Game', image: '/ai course/quick draw.png', icon: '🎨', gameUrl: 'https://quickdraw.withgoogle.com/' },
+    { id: 'ai-guess', title: 'AI Guess Game', image: '/ai course/ai guess.png', icon: '🎮', gameUrl: 'https://experiments.withgoogle.com/ai-experiments/list/ai-duet' },
+    { id: 'games', title: 'More Games', icon: '🎲' }
+  ];
+
+  const gameLinks = [
+    { name: 'Teachable Machine', url: 'https://teachablemachine.withgoogle.com/', icon: '🧠' },
+    { name: 'AI Experiments', url: 'https://experiments.withgoogle.com/ai', icon: '🔬' },
+    { name: 'Mystery Animal', url: 'https://experiments.withgoogle.com/ai-experiments/list/mystery-animal', icon: '🦁' },
+    { name: 'Emoji Scavenger Hunt', url: 'https://experiments.withgoogle.com/ai-experiments/list/emoji-scavenger-hunt', icon: '🔍' }
   ];
 
   return (
@@ -31,90 +41,62 @@ const CoursePage = () => {
       </header>
 
       <div className="course-content">
-        {/* Navigation Tabs */}
-        <div className="course-tabs">
-          <button 
-            className={`tab-btn ${activeTab === 'pdf' ? 'active' : ''}`}
-            onClick={() => setActiveTab('pdf')}
-          >
-            <FaBook /> Course Materials
-          </button>
-          <button 
-            className={`tab-btn ${activeTab === 'quickdraw' ? 'active' : ''}`}
-            onClick={() => setActiveTab('quickdraw')}
-          >
-            <FaGamepad /> Quick Draw Game
-          </button>
+        {/* Navigation Cards */}
+        <div className="course-nav">
+          {sections.map((section) => (
+            <div
+              key={section.id}
+              className={`nav-card ${activeSection === section.id ? 'active' : ''}`}
+              onClick={() => setActiveSection(section.id)}
+            >
+              <span className="nav-icon">{section.icon}</span>
+              <span className="nav-title">{section.title}</span>
+            </div>
+          ))}
         </div>
 
-        {/* PDF Viewer Section */}
-        {activeTab === 'pdf' && (
-          <div className="pdf-section">
-            <div className="section-intro">
-              <h2>Welcome to Computer & AI Course!</h2>
-              <p>Learn about computers, programming, and artificial intelligence through this interactive course.</p>
+        {/* Content Display */}
+        <div className="content-display">
+          {activeSection === 'games' ? (
+            <div className="games-section">
+              <h2>🎮 More AI Games</h2>
+              <p>Click on any game to play and learn more about AI!</p>
+              <div className="games-grid">
+                {gameLinks.map((game, index) => (
+                  <a
+                    key={index}
+                    href={game.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="game-card"
+                  >
+                    <span className="game-icon">{game.icon}</span>
+                    <span className="game-name">{game.name}</span>
+                  </a>
+                ))}
+              </div>
             </div>
-
-            <div className="course-sections">
-              {sections.map((section) => (
-                <div key={section.id} className="section-card">
-                  <div className="section-icon">
-                    <section.icon />
-                  </div>
-                  <h3>{section.title}</h3>
-                  <p>Click to view this section</p>
+          ) : (
+            <div className="section-content">
+              {sections.find(s => s.id === activeSection)?.gameUrl ? (
+                <div className="game-iframe-container">
+                  <iframe
+                    src={sections.find(s => s.id === activeSection)?.gameUrl}
+                    className="game-iframe"
+                    title={sections.find(s => s.id === activeSection)?.title}
+                    allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone"
+                  />
                 </div>
-              ))}
-            </div>
-
-            <div className="pdf-viewer-container">
-              <div className="pdf-placeholder">
-                <div className="pdf-icon">📄</div>
-                <h3>Course PDF</h3>
-                <p>Place your course PDF file in the public folder and update the path below</p>
-                <div className="pdf-instructions">
-                  <p><strong>To add your PDF:</strong></p>
-                  <ol>
-                    <li>Put your PDF file in: <code>frontend/public/course.pdf</code></li>
-                    <li>Update the iframe src in CoursePage.js to: <code>/course.pdf</code></li>
-                  </ol>
-                </div>
-                <iframe 
-                  src="/course.pdf" 
-                  className="pdf-iframe"
-                  title="Course PDF"
+              ) : (
+                <img
+                  src={sections.find(s => s.id === activeSection)?.image}
+                  alt={sections.find(s => s.id === activeSection)?.title}
+                  className="section-image"
                 />
-              </div>
+              )}
             </div>
-          </div>
-        )}
-
-        {/* Quick Draw Section */}
-        {activeTab === 'quickdraw' && (
-          <div className="quickdraw-section">
-            <div className="quickdraw-intro">
-              <h2>Quick Draw - AI Drawing Game</h2>
-              <p>Draw something and watch the AI guess what it is! This game uses machine learning to recognize your drawings in real-time.</p>
-              <div className="quickdraw-tips">
-                <h3>Tips for playing:</h3>
-                <ul>
-                  <li>Draw clearly and simply</li>
-                  <li>Use simple shapes</li>
-                  <li>Try common objects like: cat, dog, car, house, tree</li>
-                  <li>Have fun and experiment!</li>
-                </ul>
-              </div>
-            </div>
-            <div className="quickdraw-iframe-container">
-              <iframe 
-                src="https://quickdraw.withgoogle.com/" 
-                className="quickdraw-iframe"
-                title="Quick Draw Game"
-                allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone"
-              />
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
