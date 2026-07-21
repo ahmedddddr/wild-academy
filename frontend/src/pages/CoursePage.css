@@ -289,8 +289,7 @@
 
 .fullscreen-nav {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 20px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -310,7 +309,7 @@
 }
 
 .fullscreen-nav:hover:not(:disabled) {
-  transform: translateY(-50%) scale(1.1);
+  transform: scale(1.1);
 }
 
 .prev-button.fullscreen-nav {
