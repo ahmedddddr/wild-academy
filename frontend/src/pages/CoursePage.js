@@ -4,8 +4,10 @@ import './CoursePage.css';
 
 const CoursePage = () => {
   const [activeSection, setActiveSection] = useState('intro');
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const navigate = useNavigate();
   const contentDisplayRef = useRef(null);
+  const contentAreaRef = useRef(null);
 
   const sections = [
     { id: 'intro', title: 'Introduction', image: '/ai course/first page.png', icon: '📚' },
@@ -35,6 +37,27 @@ const CoursePage = () => {
     setActiveSection(sectionId);
     if (contentDisplayRef.current) {
       contentDisplayRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+    if (!isFullscreen && contentAreaRef.current) {
+      if (contentAreaRef.current.requestFullscreen) {
+        contentAreaRef.current.requestFullscreen();
+      } else if (contentAreaRef.current.webkitRequestFullscreen) {
+        contentAreaRef.current.webkitRequestFullscreen();
+      } else if (contentAreaRef.current.msRequestFullscreen) {
+        contentAreaRef.current.msRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
     }
   };
 
@@ -79,7 +102,15 @@ const CoursePage = () => {
             ← Previous
           </button>
 
-          <div className="content-area">
+          <div className="content-area" ref={contentAreaRef}>
+            <button 
+              className="fullscreen-button"
+              onClick={toggleFullscreen}
+              title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+            >
+              {isFullscreen ? "✕" : "⛶"}
+            </button>
+            
             {sections.find(s => s.id === activeSection)?.gameUrl ? (
               <div className="game-iframe-container">
                 <div className="game-header">
