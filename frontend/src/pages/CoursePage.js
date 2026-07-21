@@ -112,7 +112,7 @@ const CoursePage = () => {
             </button>
             
             {sections.find(s => s.id === activeSection)?.gameUrl ? (
-              <div className="game-iframe-container">
+              <div className="game-container">
                 <div className="game-header">
                   <h2>🎨 Quick Draw Game</h2>
                   <p>Draw something and watch the AI guess what it is!</p>
@@ -120,17 +120,19 @@ const CoursePage = () => {
                     href="https://quickdraw.withgoogle.com/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="game-link"
+                    className="gamelink-button"
                   >
-                    Open Quick Draw in new tab →
+                    Play Quick Draw Game →
                   </a>
                 </div>
-                <iframe
-                  src={sections.find(s => s.id === activeSection)?.gameUrl}
-                  className="game-iframe"
-                  title={sections.find(s => s.id === activeSection)?.title}
-                  allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone"
-                  sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                <img
+                  src={sections.find(s => s.id === activeSection)?.image}
+                  alt={sections.find(s => s.id === activeSection)?.title}
+                  className="game-image"
+                  onError={(e) => {
+                    console.error('Image failed to load:', sections.find(s => s.id === activeSection)?.image);
+                    e.target.style.display = 'none';
+                  }}
                 />
               </div>
             ) : (
