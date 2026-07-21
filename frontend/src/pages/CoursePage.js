@@ -13,17 +13,22 @@ const CoursePage = () => {
     { id: 'binary', title: 'Binary Language', image: '/ai course/binary.png', icon: '🔢' },
     { id: 'fields', title: '5 Programming Fields', image: '/ai course/5 fields.png', icon: '🎯' },
     { id: 'ai-intro', title: 'Introduction to AI', image: '/ai course/ai intro.png', icon: '🤖' },
-    { id: 'quickdraw', title: 'Quick Draw Game', image: '/ai course/quick draw.png', icon: '🎨', gameUrl: 'https://quickdraw.withgoogle.com/' },
-    { id: 'ai-guess', title: 'AI Guess Game', image: '/ai course/ai guess.png', icon: '🎮', gameUrl: 'https://experiments.withgoogle.com/ai-experiments/list/ai-duet' },
-    { id: 'games', title: 'More Games', icon: '🎲' }
+    { id: 'quickdraw', title: 'Quick Draw Game', image: '/ai course/quick draw.png', icon: '🎨', gameUrl: 'https://quickdraw.withgoogle.com/' }
   ];
 
-  const gameLinks = [
-    { name: 'Teachable Machine', url: 'https://teachablemachine.withgoogle.com/', icon: '🧠' },
-    { name: 'AI Experiments', url: 'https://experiments.withgoogle.com/ai', icon: '🔬' },
-    { name: 'Mystery Animal', url: 'https://experiments.withgoogle.com/ai-experiments/list/mystery-animal', icon: '🦁' },
-    { name: 'Emoji Scavenger Hunt', url: 'https://experiments.withgoogle.com/ai-experiments/list/emoji-scavenger-hunt', icon: '🔍' }
-  ];
+  const currentIndex = sections.findIndex(s => s.id === activeSection);
+
+  const goToPrevious = () => {
+    if (currentIndex > 0) {
+      setActiveSection(sections[currentIndex - 1].id);
+    }
+  };
+
+  const goToNext = () => {
+    if (currentIndex < sections.length - 1) {
+      setActiveSection(sections[currentIndex + 1].id);
+    }
+  };
 
   return (
     <div className="course-container">
@@ -51,51 +56,74 @@ const CoursePage = () => {
             >
               <span className="nav-icon">{section.icon}</span>
               <span className="nav-title">{section.title}</span>
+              <img src={section.image} alt={section.title} className="nav-image" />
             </div>
           ))}
         </div>
 
-        {/* Content Display */}
+        {/* Content Display with Navigation */}
         <div className="content-display">
-          {activeSection === 'games' ? (
-            <div className="games-section">
-              <h2>🎮 More AI Games</h2>
-              <p>Click on any game to play and learn more about AI!</p>
-              <div className="games-grid">
-                {gameLinks.map((game, index) => (
-                  <a
-                    key={index}
-                    href={game.url}
-                    target="_blank"
+          <button 
+            className="nav-button prev-button" 
+            onClick={goToPrevious}
+            disabled={currentIndex === 0}
+          >
+            ← Previous
+          </button>
+
+          <div className="content-area">
+            {sections.find(s => s.id === activeSection)?.gameUrl ? (
+              <div className="game-iframe-container">
+                <div className="game-header">
+                  <h2>🎨 Quick Draw Game</h2>
+                  <p>Draw something and watch the AI guess what it is!</p>
+                  <a 
+                    href="https://quickdraw.withgoogle.com/" 
+                    target="_blank" 
                     rel="noopener noreferrer"
-                    className="game-card"
+                    className="game-link"
                   >
-                    <span className="game-icon">{game.icon}</span>
-                    <span className="game-name">{game.name}</span>
+                    Open Quick Draw in new tab →
                   </a>
-                ))}
-              </div>
-            </div>
-          ) : (
-            <div className="section-content">
-              {sections.find(s => s.id === activeSection)?.gameUrl ? (
-                <div className="game-iframe-container">
-                  <iframe
-                    src={sections.find(s => s.id === activeSection)?.gameUrl}
-                    className="game-iframe"
-                    title={sections.find(s => s.id === activeSection)?.title}
-                    allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone"
-                  />
                 </div>
-              ) : (
+                <iframe
+                  src={sections.find(s => s.id === activeSection)?.gameUrl}
+                  className="game-iframe"
+                  title={sections.find(s => s.id === activeSection)?.title}
+                  allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone"
+                />
+              </div>
+            ) : (
+              <div className="section-content">
                 <img
                   src={sections.find(s => s.id === activeSection)?.image}
                   alt={sections.find(s => s.id === activeSection)?.title}
                   className="section-image"
                 />
-              )}
-            </div>
-          )}
+              </div>
+            )}
+          </div>
+
+          <button 
+            className="nav-button next-button" 
+            onClick={goToNext}
+            disabled={currentIndex === sections.length - 1}
+          >
+            Next →
+          </button>
+        </div>
+
+        {/* Progress Indicator */}
+        <div className="progress-indicator">
+          <span className="progress-text">
+            {currentIndex + 1} of {sections.length}
+          </span>
+          <div className="progress-bar">
+            <div 
+              className="progress-fill" 
+              style={{ width: `${((currentIndex + 1) / sections.length) * 100}%` }}
+            />
+          </div>
         </div>
       </div>
     </div>
