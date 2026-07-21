@@ -94,14 +94,6 @@ const CoursePage = () => {
 
         {/* Content Display with Navigation */}
         <div className="content-display" ref={contentDisplayRef}>
-          <button 
-            className="nav-button prev-button" 
-            onClick={goToPrevious}
-            disabled={currentIndex === 0}
-          >
-            ← Previous
-          </button>
-
           <div className="content-area" ref={contentAreaRef}>
             <button 
               className="fullscreen-button"
@@ -109,6 +101,14 @@ const CoursePage = () => {
               title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
             >
               {isFullscreen ? "✕" : "⛶"}
+            </button>
+            
+            <button 
+              className={`nav-button prev-button fullscreen-nav ${isFullscreen ? 'visible' : ''}`} 
+              onClick={goToPrevious}
+              disabled={currentIndex === 0}
+            >
+              ←
             </button>
             
             {sections.find(s => s.id === activeSection)?.gameUrl ? (
@@ -146,15 +146,15 @@ const CoursePage = () => {
                 />
               </div>
             )}
+            
+            <button 
+              className={`nav-button next-button fullscreen-nav ${isFullscreen ? 'visible' : ''}`} 
+              onClick={goToNext}
+              disabled={currentIndex === sections.length - 1}
+            >
+              →
+            </button>
           </div>
-
-          <button 
-            className="nav-button next-button" 
-            onClick={goToNext}
-            disabled={currentIndex === sections.length - 1}
-          >
-            Next →
-          </button>
         </div>
 
         {/* Progress Indicator */}
