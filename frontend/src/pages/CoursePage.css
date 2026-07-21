@@ -287,50 +287,6 @@
   transform: scale(0.95);
 }
 
-.fullscreen-nav {
-  position: absolute;
-  bottom: 20px;
-  transform: translateY(0);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  padding: 0;
-  font-size: 1.5rem;
-  display: none;
-  z-index: 10;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.fullscreen-nav.visible {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 1;
-}
-
-.fullscreen-nav:hover:not(:disabled) {
-  transform: scale(1.1);
-}
-
-.prev-button.fullscreen-nav {
-  left: 50%;
-  transform: translateX(-120%);
-}
-
-.prev-button.fullscreen-nav:hover:not(:disabled) {
-  transform: translateX(-120%) scale(1.1);
-}
-
-.next-button.fullscreen-nav {
-  right: 50%;
-  transform: translateX(120%);
-}
-
-.next-button.fullscreen-nav:hover:not(:disabled) {
-  transform: translateX(120%) scale(1.1);
-}
-
 .section-content {
   display: flex;
   justify-content: center;
