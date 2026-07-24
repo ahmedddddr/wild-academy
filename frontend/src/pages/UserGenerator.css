@@ -156,18 +156,25 @@ button:hover {
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
 }
 
 .search-container input {
   padding: 14px 20px;
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
   border: 2px solid #e8e8e8;
   border-radius: 12px;
   font-size: 1rem;
   background: white;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 200px;
 }
 
 .search-container input:focus {
@@ -179,6 +186,27 @@ button:hover {
 .search-container input::placeholder {
   color: #999;
   font-weight: 400;
+}
+
+.filter-select {
+  padding: 14px 20px;
+  width: 100%;
+  max-width: 250px;
+  border: 2px solid #e8e8e8;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 180px;
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
 }
 
 .user-generator-container > p {

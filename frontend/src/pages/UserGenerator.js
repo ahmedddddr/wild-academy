@@ -6,6 +6,8 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
 const UserGenerator = () => {
   const [users, setUsers] = useState([]);
   const [searchPhone, setSearchPhone] = useState('');
+  const [filterBranch, setFilterBranch] = useState('');
+  const [filterAgeGroup, setFilterAgeGroup] = useState('');
 
   useEffect(() => {
     fetchUsers();
@@ -21,9 +23,12 @@ const UserGenerator = () => {
     }
   };
 
-  const filteredUsers = users.filter(user =>
-    user.phone.includes(searchPhone)
-  );
+  const filteredUsers = users.filter(user => {
+    const matchesPhone = user.phone.includes(searchPhone);
+    const matchesBranch = filterBranch === '' || user.branch === filterBranch;
+    const matchesAge = filterAgeGroup === '' || user.ageGroup === filterAgeGroup;
+    return matchesPhone && matchesBranch && matchesAge;
+  });
 
   const handleDelete = async (userId) => {
     if (!window.confirm('Are you sure you want to delete this user?')) {
@@ -50,7 +55,7 @@ const UserGenerator = () => {
     <div className="user-generator-container">
       <h1>Generated Users</h1>
 
-      {/* Search Box */}
+      {/* Search and Filter Box */}
       <div className="search-container">
         <input 
           type="text" 
@@ -58,6 +63,31 @@ const UserGenerator = () => {
           value={searchPhone}
           onChange={(e) => setSearchPhone(e.target.value)}
         />
+        
+        <select 
+          value={filterBranch} 
+          onChange={(e) => setFilterBranch(e.target.value)}
+          className="filter-select"
+        >
+          <option value="">All Branches</option>
+          <option value="German future school">German future school – Rehab</option>
+          <option value="Othman Bin affan school">Othman Bin affan school – Rehab</option>
+          <option value="Madinaty">Madinaty Sports Club</option>
+          <option value="MILS">MILS – Madinaty</option>
+          <option value="MIOLS">MIOLS – Madinaty</option>
+          <option value="Carleton College">Carleton College – El Shorouk</option>
+        </select>
+
+        <select 
+          value={filterAgeGroup} 
+          onChange={(e) => setFilterAgeGroup(e.target.value)}
+          className="filter-select"
+        >
+          <option value="">All Age Groups</option>
+          <option value="4-6">4–6</option>
+          <option value="7-9">7–9</option>
+          <option value="10-14">10–14</option>
+        </select>
       </div>
 
       {filteredUsers.length === 0 ? (
