@@ -51,6 +51,14 @@ const UserGenerator = () => {
     }
   };
 
+  const handleSendWhatsApp = (user) => {
+    const phoneNumber = user.phone.replace(/\D/g, ''); // Remove all non-digits
+    const message = `Hello ${user.name}! 🎉\n\nYour Wild Academy account has been created!\n\nUsername: ${user.username}\nPassword: ${user.password}\n\nLogin to start your learning journey! 🚀`;
+    
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <div className="user-generator-container">
       <h1>Generated Users</h1>
@@ -103,7 +111,7 @@ const UserGenerator = () => {
                 <th>Age Group</th>
                 <th>Username</th>
                 <th>Password</th>
-                <th>Action</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -116,7 +124,22 @@ const UserGenerator = () => {
                   <td>{user.username}</td>
                   <td>{user.password}</td>
                   <td>
-                    <button className="delete-btn" onClick={() => handleDelete(user._id)}>Delete</button>
+                    <div className="action-buttons">
+                      <button 
+                        className="whatsapp-btn" 
+                        onClick={() => handleSendWhatsApp(user)}
+                        title="Send via WhatsApp"
+                      >
+                        📱
+                      </button>
+                      <button 
+                        className="delete-btn" 
+                        onClick={() => handleDelete(user._id)}
+                        title="Delete User"
+                      >
+                        🗑️
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
